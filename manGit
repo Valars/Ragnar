@@ -1,0 +1,7 @@
+Comment envoyer les modifications du projet sur github ? :
+
+dans une console : git commit 'lesfichiers'
+    ecrire le log (qu'est ce qu'on a modifié)
+puis " git push "
+
+ça demande username et motdepasse et basta
