@@ -6,7 +6,7 @@ Tout le groupe :
     
     - modélisation des données (classes)
     
-    - traitement/interprétation des formalismes INIT/TEST
+    - traitement/interprétation des formalismes INIT/STATE
     
     - Confirmer que tout le monde a compris le fonctionnement du serveur (qui appelera nos 3 fonctions dans l'ordre)
         et le fonctionnement général du jeu/des règles
