@@ -1,0 +1,19 @@
+Ce qu'il faut faire
+
+Virgile :
+    refaire ma fonction de traitement de "STATE" pour prendre en compte correctement le formalisme utilisé pour les MOVES
+
+Tout le groupe :
+    Voir ensemble le travail à faire et le travail déjà effectué
+    c.à.d : 
+    
+    - modélisation des données (classes)
+    
+    - traitement/interprétation des formalismes INIT/TEST
+    
+    - Confirmer que tout le monde a compris le fonctionnement du serveur (qui appelera nos 3 fonctions dans l'ordre)
+        et le fonctionnement général du jeu/des règles
+        
+    - Réfléchir ensemble à l'IA, les stratégies etc etc ...
+    
+Je propose : se voir jeudi après midi en salle de travail BU pour faire tout ça :) - Virgile
