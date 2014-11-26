@@ -1,7 +1,20 @@
-Comment envoyer les modifications du projet sur github ? :
 
-dans une console : git commit 'lesfichiers'
-    ecrire le log (qu'est ce qu'on a modifié)
-puis " git push "
+Pour envoyer les modifications d'un fichier sur le github : 
 
-ça demande username et motdepasse et basta
+git commit lefichieraenvoyer
+remplir le log (important ...)
+git push
+
+Pour créer un nouveau fichier/dossier
+
+le créer sur C9
+git add lefichier/dossier
+git commit lefichier/dossier
+git push
+
+Pour supprimer un fichier/dossier du github
+
+git remove fichier/dossier
+    /!\ faire un git remove supprime sur le github, mais pas sur le C9 et identiquement
+        supprimer sur le C9 ne supprime pas sur le github ! penser à faire les deux ! (l'ordre importe peu)
+git push
