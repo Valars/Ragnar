@@ -2,3 +2,5 @@
 
 <h6>Equipe : Guillaume Paulet, Awa Camara, Romain Garnier, Virgile Jarry</h6>
 
+<a href="http://madoc.univ-nantes.fr/course/view.php?id=29903">La doc officielle du jeu</a>
+<a href="http://madoc.univ-nantes.fr/mod/url/view.php?id=217663">Le jeu</a>
