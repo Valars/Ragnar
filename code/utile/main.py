@@ -90,13 +90,22 @@ def initGraphique(canva,plateau) :
 '''
 def parseEtat(chaine) :
     cells = re.findall("([0-9]+)\[([0-9]+)\]([0-9]+)'([0-9]+)", chaine)
-    moves = re.findall("([0-9]+)([<>])([0-9]+)\[([0-9]+)\]@([0-9]+)", chaine)
+    moves = re.findall("MOVES:(.*)", chaine)
+    moves = moves[0].split(',')
+
     noeuds = []
     mouvements = []
     for cell in cells :
         noeuds.append({"id":int(cell[0]),"owner":int(cell[1]),"atk":int(cell[2]),"def":int(cell[3])})
+
     for move in moves :
-        mouvements.append({"celluleFrom":int(move[0]), "direction":move[1], "nbUnits":int(move[2]), "timestamp":int(move[3])})
+        arcFrom = re.findall('^([0-9]+)', move)
+        arcTo = re.findall("'([0-9]+)$", move)
+        arcFrom = int(arcFrom[0])
+        arcTo = int(arcTo[0])
+        movesSurLarc = re.findall("([<>])([0-9]+)\[([0-9]+)\]@([0-9]+)", move)
+        for lemove in movesSurLarc :
+            mouvements.append({"from":arcFrom, "to":arcTo, "direction":lemove[0], "nbUnits":int(lemove[1]), "timestamp":int(lemove[3]), "joueur":int(lemove[2])})
 
     return {"noeuds":noeuds, "moves":mouvements}
 
@@ -114,6 +123,9 @@ for newInfosNoeud in etat["noeuds"] :
             noeud.proprio = 1 if newInfosNoeud["owner"] == plateau["me"] else (0 if newInfosNoeud["owner"] == 0 else -1)
             noeud.off = newInfosNoeud["atk"]
             noeud.defenses = newInfosNoeud["def"]
+
+for i in etat["moves"] :
+    print(i)
 ########################################
 ########################################
 #A ce stade, on possède tous l'état du jeu à l'initialisation !######
