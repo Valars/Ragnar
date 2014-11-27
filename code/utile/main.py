@@ -1,6 +1,8 @@
 from tkinter import *
 from noeud import *
 from arete import *
+from partie import *
+
 import re
 
 window = Tk()
@@ -58,7 +60,7 @@ def initPlateau(chaine) :
     Affichage dans le canva 'canva' les éléments graphiques contenus dans le plateau 'plateau' (liste des objets noeuds et aretes)
     retourne rien
 '''
-def initGraphique(canva,plateau) :
+def initGraphique(canva,plateau, moves) :
     #AFFICHAGE DES LIGNES
     for ligne in plateau[1] :
         noeudDe = plateau[0][ligne.de-1]
@@ -70,6 +72,11 @@ def initGraphique(canva,plateau) :
     #AFFICHAGE DES NOEUDS
     for noeud in plateau[0] :
         noeud.afficher(w)
+
+    offsety = 400-15
+    for move in moves :
+        canva.create_text(120,offsety,text=str(move["joueur"])+"Envoi de "+str(move["from"])+"->"+str(move["to"])+" de "+str(move["nbUnits"])+" unites"+str(move["timestamp"]),font=('Helvetica', 9))
+        offsety = offsety-10
 # ################################################
 # ################################################
 # ################################################
@@ -114,6 +121,7 @@ def parseEtat(chaine) :
 plateau = initPlateau("INIT20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2];1;3CELLS:1(150,10)'2'30'8'I,2(50,200)'2'30'8'II,3(250,200)'2'20'5'I;2LINES:1@3433OF2,1@6502OF3,2@850OF3")
 
 
+#Première récupération de l'état du jeu et mise à jour des cellules / mouvements
 etat = parseEtat(state())
 
 for newInfosNoeud in etat["noeuds"] :
@@ -124,8 +132,7 @@ for newInfosNoeud in etat["noeuds"] :
             noeud.off = newInfosNoeud["atk"]
             noeud.defenses = newInfosNoeud["def"]
 
-for i in etat["moves"] :
-    print(i)
+
 ########################################
 ########################################
 #A ce stade, on possède tous l'état du jeu à l'initialisation !######
@@ -138,7 +145,7 @@ for i in etat["moves"] :
 
 
 #affichage graphique du plateau
-initGraphique(w,[plateau["noeuds"],plateau["lignes"]])
+initGraphique(w,[plateau["noeuds"],plateau["lignes"]], etat["moves"])
 
 #BOUCLE PRINCIPALE
 while(True) :
