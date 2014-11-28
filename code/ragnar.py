@@ -64,7 +64,7 @@ def parseEtat(chaine) :
 
 
 #création d'un objet partie pour stocker userID matchID, et plateau :)
-laPartie = partie()
+global laPartie = partie()
 
 def register_pooo(uid):
     """Inscrit un joueur et initialise le robot pour la compétition
@@ -77,7 +77,8 @@ def register_pooo(uid):
         "0947e717-02a1-4d83-9470-a941b6e8ed07"
 
     """
-    global userid = uid
+    laPartie.uid = uid
+
 def initGraphique(canva,plateau) :
     #AFFICHAGE DES LIGNES
     for ligne in plateau[1] :
@@ -90,7 +91,7 @@ def initGraphique(canva,plateau) :
     #AFFICHAGE DES NOEUDS
     for noeud in plateau[0] :
         noeud.afficher(w)
-plateau = []
+
 def init_pooo(init_string):
     """Initialise le robot pour un match
 
@@ -115,7 +116,11 @@ def init_pooo(init_string):
         "INIT20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2];1;2CELLS:1[2]23'9'2'30'8'1,2[1]41'55'1'30'8'2;2LINES:1@3433OF2,1@6502OF3"
 
     """
-    global plateau = initPlateau(init_string)
+    laPartie.plateau = initPlateau(init_string)
+    laPartie.matchid = laPartie.plateau["matchid"]
+    laPartie.speed = laPartie.plateau["speed"]
+    laPartie.me = laPartie.plateau["me"]
+    laPartie.plateau = [laPartie.plateau["noeuds"],laPartie.plateau["lignes"]]
 
 
 
@@ -124,6 +129,7 @@ def play_pooo():
 
     """
     logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
+    etat = parseEtat(state())
     ### Début stratégie joueur ###
     # séquence type :
     # (1) récupère l'état initial
