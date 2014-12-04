@@ -1,0 +1,55 @@
+On s'est tous mis d'accord sur le fonctionnement du programme tel qu'il sera (les trois fonctions de base, les protocoles utilisés)
+Définition des structures de données
+Romain à fait un schéma de ces classes/structures
+Définition de ce qu'il faudra faire plus tard
+    dictionnaire des données
+    un prototype de programme débile mais qui marche (fait un mouvement et c'est marre)
+
+
+
+===== Statuts des cellules =====
+
+1. Fournisseur : que des alliés à portée
+2. Rusher : des neutre(s) (+attaquant(s)) à portée
+3. Attaquant : des ennemis (+alliés) à portée
+
+=== 1. Fournisseur :
+Fournir qui ? 
+    -1 ou n alliés
+
+=== 2. Rusher :
+
+Si neutre : quelle neutre conquérir ? 1 ou n possibles
+Si neutre + ennemi(s) : attaquer ? conquerir ? attendre ?
+
+=== 3. Attaquant :
+Attaquer qui ? 1 ou n ennemis
+
+
+===== Notion de danger =====
+
+Idée : Stockage des noeuds en danger dans une structure particulière. 
+On pourrait stocker en même temps de combien le noeud est en sous nombre => utile pour que les fournisseurs apportent le nombre correct d'unités.
+Cette liste se met à jour juste après l'ordonnancement de la liste d'exécution des noeuds. (au début de la fonction play_poo)
+
+Danger = (Nb ennemis sur les noeuds et arretes à portée) > (Nb unités alliés dans le noeud ciblé + les unités alliés en chemin vers ce noeud)
+
+Evol possible: prendre en compte les temps de production des unités et les temps de déplacements
+
+
+====== Priorité des noeuds à jouer =====
+
+Au début de la fonction play_poo, on ordonne la liste d'exécution (liste de noeuds) selon certaines contraintes :
+    - Les rusher en premier
+    - Les fournisseurs ensuite
+    - Les attaquants enfin.
+    
+Ensuite, pour chaque noeud de cette liste : on joue ! \o/ 
+
+====== Début de jeu ======
+
+Au début de partie : pour faire le choix de qui capturer en premier ou second, calculer à l'aide d'une fonction la rentabilité des differents cas et
+                    en se servant eventuellement d'un genre de ratio unités necessaires pour capturer la cellule x divisé par la capacité de production de la cellule x 
+
+
+
