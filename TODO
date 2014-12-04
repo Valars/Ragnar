@@ -14,3 +14,23 @@ Tout le groupe :
     - Réfléchir ensemble à l'IA, les stratégies etc etc ...
     
 Je propose : se voir jeudi après midi en salle de travail BU pour faire tout ça :) - Virgile
+
+
+A continuer :
+
+noeud a une liste "aretesConnectees" qui retient des references vers des aretes
+
+faire une classe mouvements
+    destination (reference vers noeud)
+    nbUnites
+    duree
+    proprietairedesunites
+
+dans Arete : liste des mouvements sur l'arete (liste de references vers des objets "mouvements")
+
+faire en sorte que tout ce qui est concerné utilise des references sur objets et pas des id de ces objets
+
+CADENCES :
+I = 0.5unité/sec
+II = 2/3 d'unité/sec
+III = 1u/sec
