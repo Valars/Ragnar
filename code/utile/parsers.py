@@ -3,23 +3,11 @@ from noeud import *
 from arete import *
 from partie import *
 
-'''prend une chaine en paramètre de la forme suivante :
-INIT<matchid>TO<#players>[<me>];<speed>;\
-       <#cells>CELLS:<cellid>(<x>,<y>)'<radius>'<offsize>'<defsize>'<prod>,...;\
-       <#lines>LINES:<cellid>@<dist>OF<cellid>,...
-
-       <me> et <owner> désignent des numéros de 'couleur' attribués aux joueurs. La couleur 0 est le neutre.
-       le neutre n'est pas compté dans l'effectif de joueurs (<#players>).
-       '...' signifie que l'on répète la séquence précédente autant de fois qu'il y a de cellules (ou d'arêtes).
-       0CELLS ou 0LINES sont des cas particuliers sans suffixe.
-       <dist> est la distance qui sépare 2 cellules, exprimée en... millisecondes !
-       /!\ attention: un match à vitesse x2 réduit de moitié le temps effectif de trajet d'une cellule à l'autre par rapport à l'indication <dist>.
-       De manière générale temps_de_trajet=<dist>/vitesse (division entière).
-
-INIT 20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2]; 1 ; 3CELLS: 1(23,9) ' 2 ' 30 ' 8 ' I ,2(41,55)'1'30'8'II,3(23,103)'1'20'5'I ; 2LINES:1@3433OF2,1@6502OF3
-
-et retourne le matchid, la vitesse du jeu, et la liste des noeuds et des aretes du plateau sous forme de liste d'objets
-
+'''
+parseInit :
+prend un parametre (string) : la chaine d'initialisation de la partie envoyée par le serveur
+    INIT 20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2]; 1 ; 3CELLS: 1(23,9) ' 2 ' 30 ' 8 ' I ,2(41,55)'1'30'8'II,3(23,103)'1'20'5'I ; 2LINES:1@3433OF2,1@6502OF3
+retourne un objet Partie contenant toutes les infos contenues dans la chaine envoyée par le serveur
 '''
 
 def parseInit(chaine) :
@@ -54,7 +42,7 @@ def parseInit(chaine) :
     partie.speed = int(touteslesinfos[2])
     partie.me = int(touteslesinfos[1])
 
-
+    #ajout des informations "aretesConnectees" dans chaque noeud
     for ligne in partie.plateau["lignes"] :
         ligne.noeud1.aretesConnectees.append(ligne)
         ligne.noeud2.aretesConnectees.append(ligne)

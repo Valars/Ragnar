@@ -10,15 +10,15 @@ TODO :
 
 Mettre le code au propre consiste à :
 
-noeud a une liste "aretesConnectees" qui retient des references vers des aretes
++ noeud a une liste "aretesConnectees" qui retient des references vers des aretes
 
-faire une classe mouvements
++ faire une classe mouvements
     destination (reference vers noeud)
     nbUnites
     duree
     proprietairedesunites
 
-dans Arete : liste des mouvements sur l'arete (liste de references vers des objets "mouvements")
++ dans Arete : liste des mouvements sur l'arete (liste de references vers des objets "mouvements")
 
 faire en sorte que tout ce qui est concerné utilise des references sur objets et pas des id de ces objets
 
