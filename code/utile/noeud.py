@@ -19,6 +19,14 @@ class Noeud :
         print("radius : "+str(self.radius))
         print("unités : "+str(self.off)+"/"+str(self.offsize) + " + "+str(self.defenses)+"/"+str(self.defsize))
         print("Production  :"+str(self.prod))
+        print("Noeuds connectes : ",end='')
+        for arete in self.aretesConnectees :
+            print(';',end='')
+            if arete.noeud1 == self :
+                print(arete.noeud2.id,end='')
+            else :
+                print(arete.noeud1.id,end='')
+        print()
         print("#####")
 
     def afficher(self, canva) :
