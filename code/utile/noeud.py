@@ -1,5 +1,5 @@
 class Noeud :
-    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0) :
+    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[]) :
         self.id = id
         self.proprio = proprio
         self.x = x
@@ -10,6 +10,7 @@ class Noeud :
         self.prod = prod
         self.off = off
         self.defenses = defenses
+        self.aretesConnectees = aretesConnectees
 
     def printNoeud(self) :
         print("Noeud "+str(self.id))
