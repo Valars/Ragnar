@@ -4,6 +4,7 @@ from arete import *
 from partie import *
 from parsers import *
 from majObjets import *
+
 #simulation du retour serveur
 def state() :#                                                                                                                             1
     return "STATE20ac18ab-6d18-450e-94af-bee53fdc8fca IS 2 ; 3CELLS:1[1]12'4,2[2]15'2,3[0]33'6; 4MOVES:1<5[2]@232'>6[2]@488'>3[1]@4330'2,1<10[1]@2241'3"
@@ -21,6 +22,7 @@ def state() :#                                                                  
     Affichage dans le canva 'canva' les éléments graphiques contenus dans le plateau 'plateau' (liste des objets noeuds et aretes)
     retourne rien
 '''
+
 def initGraphique(canva,plateau, moves) :
     #AFFICHAGE DES LIGNES
     for ligne in plateau["lignes"] :
@@ -43,9 +45,10 @@ def initGraphique(canva,plateau, moves) :
 # ################################################
 
 #récupération du plateau, à voir si le serveur nous fourni ça d'abord, où si la première chose que notre programme fait est un 'state()'
-global partie
+
 partie = parseInit("INIT20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2];1;3CELLS:1(150,10)'2'30'8'I,2(50,200)'2'30'8'II,3(250,200)'2'20'5'I;2LINES:1@3433OF2,1@6502OF3,2@850OF3")
 
+majPlateau(parseState(state()))
 
 #Première récupération de l'état du jeu et mise à jour des cellules / mouvements
 etat = parseState(state())
@@ -59,7 +62,7 @@ for newInfosNoeud in etat["noeuds"] :
             noeud.off = newInfosNoeud["atk"]
             noeud.defenses = newInfosNoeud["def"]
 
-majPlateau(parseState(state()))
+
 ########################################
 ########################################
 #A ce stade, on possède tous l'état du jeu à l'initialisation !######

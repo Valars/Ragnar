@@ -12,6 +12,7 @@ retourne un objet Partie contenant toutes les infos contenues dans la chaine env
 '''
 
 def parseInit(chaine) :
+    global partie
     partie = Partie()
     noeuds = []
     lignes = []
