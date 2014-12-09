@@ -21,6 +21,7 @@ import inspect
 from arete import *
 from noeud import *
 
+
 def initPlateau(chaine) :
     noeuds = []
     lignes = []
@@ -64,7 +65,9 @@ def parseEtat(chaine) :
 
 
 #création d'un objet partie pour stocker userID matchID, et plateau :)
-global laPartie = partie()
+global laPartie 
+
+laPartie = partie()
 
 def register_pooo(uid):
     """Inscrit un joueur et initialise le robot pour la compétition
