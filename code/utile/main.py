@@ -3,7 +3,7 @@ from noeud import *
 from arete import *
 from partie import *
 from parsers import *
-
+from majObjets import *
 #simulation du retour serveur
 def state() :#                                                                                                                             1
     return "STATE20ac18ab-6d18-450e-94af-bee53fdc8fca IS 2 ; 3CELLS:1[1]12'4,2[2]15'2,3[0]33'6; 4MOVES:1<5[2]@232'>6[2]@488'>3[1]@4330'2,1<10[1]@2241'3"
@@ -59,7 +59,7 @@ for newInfosNoeud in etat["noeuds"] :
             noeud.off = newInfosNoeud["atk"]
             noeud.defenses = newInfosNoeud["def"]
 
-
+majPlateau(parseState(state()))
 ########################################
 ########################################
 #A ce stade, on possède tous l'état du jeu à l'initialisation !######
@@ -69,12 +69,9 @@ for newInfosNoeud in etat["noeuds"] :
 
 
 #affichage graphique du plateau
-'''window = Tk()
+window = Tk()
 w = Canvas(window, width=400, height=400)
-initGraphique(w,partie.plateau, etat["moves"])'''
-
-for noeud in partie.plateau["noeuds"] :
-    noeud.printNoeud()
+initGraphique(w,partie.plateau, etat["moves"])
 
 #BOUCLE PRINCIPALE
 while(True) :

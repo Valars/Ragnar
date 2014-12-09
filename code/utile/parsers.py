@@ -77,7 +77,6 @@ def parseState(chaine) :
     for cell in cells :
         noeuds.append({"id":int(cell[0]),"owner":int(cell[1]),"atk":int(cell[2]),"def":int(cell[3])})
 
-    print(noeuds)
 
     for move in moves :
         arcFrom = re.findall('^([0-9]+)', move)
