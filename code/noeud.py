@@ -1,3 +1,18 @@
+'''Nom : Noeud
+
+Attributs : id          : Int   : identifiant (unique pour la partie) le noeud
+            proprio     : Int   : identifiant de partie(cf. Partie.player) du joueur propriétaire du noeud
+            x           : Int   : coordonnée en abscisse du noeud (pour l'affichage graphique)
+            y           : Int   : coordonnée en ordonné du noeud (pour l'affichage graphique)
+            radius      : Int   : diametre du noeud (pour l'affichage graphique)
+            offsize     : Int   : nombre maximal d'unités offensives que la cellule peut posséder
+            defsize     : Int   : nombre maximal d'unités défensives que la cellule peut posséder  
+            prod        : Float : production d'unité en unité/sec 
+            effectifOff : Int   : nombre d'unités offensives possedées
+            effectifDef : Int   : nombre d'unités defensives possedées
+            listeArete  : Liste : contient les objets Arete connectés au noeud
+'''
+
 class Noeud :
     def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[]) :
         self.id = id

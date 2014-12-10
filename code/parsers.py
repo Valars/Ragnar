@@ -12,25 +12,27 @@ retourne un objet Partie contenant toutes les infos contenues dans la chaine env
 '''
 
 def parseInit(chaine) :
-    global partie
     partie = Partie()
     noeuds = []
     lignes = []
 
     touteslesinfos = re.findall("INIT(.+)TO[0-9]+\[([0-9]+)\];([0-9]+);[0-9]+CELLS:(.+);[0-9]+LINES:(.+)",chaine)
     touteslesinfos = touteslesinfos[0]
-
+    
+    print(touteslesinfos[3])
     cells = re.findall("([0-9]+\([0-9]+,[0-9]+\)'[0-9]+'[0-9]+'[0-9]+'[I]+)",touteslesinfos[3])
+    print(cells)
+    
     for cell in cells :
         infos = re.findall("([0-9]+)\(([0-9]+),([0-9]+)\)'([0-9]+)'([0-9]+)'([0-9]+)'([I]+)",cell)
         noeuds.append(Noeud(int(infos[0][0]), int(infos[0][1]), int(infos[0][2]), int(infos[0][3]), int(infos[0][4]), int(infos[0][5]), infos[0][6], -1, 0, 0, []))
 
     lines = re.findall('[0-9]+@[0-9]+OF[0-9]+',touteslesinfos[4])
-
+    
     for line in lines :
         infoLigne = re.findall('([0-9]+)@([0-9]+)OF([0-9]+)', line)
         #infoLigne[0][0] = noeud1, 0 2 est le noeud2
-
+        
         for noeud in noeuds :
             if noeud.id == int(infoLigne[0][0]) :
                 noeud1 = noeud
