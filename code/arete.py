@@ -6,7 +6,7 @@ class Arete :
             self.mouvements = mouvements
 
         def printArete(self) :
-            print("Arete de " + str(self.noeud1) + " vers "+str(self.noeud2))
+            print("Arete de " + str(self.noeud1.id) + " vers "+str(self.noeud2.id))
             print("Longueur : "+str(self.longueur))
             print("#####")
 
