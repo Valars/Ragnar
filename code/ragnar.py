@@ -20,13 +20,13 @@ from majObjets import *
 def register_pooo(uid):
     global partie
     partie = Partie("",uid)
-    
+
 def init_pooo(init_string):
     global partie
     uid = partie.uid
     partie = parseInit(init_string)
     partie.uid = uid
-    
+
 
 
 def play_pooo():
@@ -34,7 +34,7 @@ def play_pooo():
 
     """
     logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
-    
+
     ### Début stratégie joueur ###
     # séquence type :
     # (1) récupère l'état initial
