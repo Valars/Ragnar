@@ -1,0 +1,48 @@
+I-La partie
+
+Nom : Partie
+
+Attributs : -matchid : Chaine de caractères, identifiant de la partie
+            -userid  : Chaine de caractères, identifiant du joueur pour tout le tournoi
+            -player  : Int identifiant le joueur dans la partie
+            -vitesse : Int, donne la vitesse du jeu (Hypothétique)
+            -plateau : Liste, contient la liste des objets Noeud ainsi que la liste des objets Arete de t
+                        tout le plateau
+
+
+II-Les noeuds
+
+Nom : Noeud
+
+Attributs : -id          : Int, identifiant (unique pour la partie) le noeud
+            -proprio     : Int, identifiant de partie(cf. Partie.player) du joueur propriétaire du noeud
+            -x           : Int, coordonnée en abscisse du noeud (pour l'affichage graphique)
+            -y           : Int, coordonnée en ordonné du noeud (pour l'affichage graphique)
+            -radius      : Int, diametre du noeud (pour l'affichage graphique)
+            -offsize     : Int, nombre maximal d'unités offensives que la cellule peut posséder
+            -defsize     : Int, nombre maximal d'unités défensives que la cellule peut posséder  
+            -prod        : Float, production d'unité en unité/sec (
+            -effectifOff : Int, nombre de cellules offensives possedées
+            -effectifDef : Int, nombre de cellules defensives possedées
+            -listeArete  : Liste, contient les objets Arete connectés au noeud
+            
+
+
+III-Les arêtes
+
+Nom : Arete
+
+Attributs : -noeud1     : Noeud, un des noeuds formant la première extremité de l'arete
+            -noeud2     : Noeud, second noeud formant la seconde extremité de l'arête
+            -longueur   : Int, temps necessaire pour parcourir l'arête en ms
+            -liste_mouv : Liste, contient les objets de type Mouvement traduisant les déplacement en cours sur l'arête
+
+
+IV-Les groupes d'unité en mouvement
+
+Nom : Mouvement
+
+Attributs : -destination : Noeud, 
+            -nbr         : Int, nombre d'unité offensive en cours de déplacement pour ce mouvement
+            -impact      : Int, temps restant avant arrivée à destination (en ms)
+            -proprio     : Int, joueur proprietaire des unités (cf. Partie.player)

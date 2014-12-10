@@ -1,0 +1,26 @@
+
+Pour envoyer les modifications d'un fichier sur le github : 
+
+git commit lefichieraenvoyer
+remplir le log (important ...)
+git push
+
+Pour créer un nouveau fichier/dossier
+
+le créer sur C9
+git add lefichier/dossier
+git commit lefichier/dossier
+git push
+
+Pour supprimer un fichier/dossier du github
+
+git remove fichier/dossier
+    /!\ faire un git remove supprime sur le github, mais pas sur le C9 et identiquement
+        supprimer sur le C9 ne supprime pas sur le github ! penser à faire les deux ! (l'ordre importe peu)
+git push
+
+
+Notes : 
+
+faire un git add sur un dossier ajoute récursivement par défaut tous les fichiers dans le dossier ;)
+idem pour remove
