@@ -14,7 +14,8 @@ from parsers import *
 from partie import *
 from majObjets import *
 
-
+def state() :
+    return "STATE20ac18ab-6d18-450e-94af-bee53fdc8fcaIS2;3CELLS:1[2]12'4,2[2]15'2,3[1]33'6;4MOVES:1<5[2]@232'>6[2]@488'>3[1]@4330'2,1<10[1]@2241'3"
 
 
 def register_pooo(uid):
@@ -28,13 +29,15 @@ def init_pooo(init_string):
     partie.uid = uid
 
 
-
 def play_pooo():
+    global partie
     """Active le robot-joueur
 
     """
     logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
 
+    init_state = parseState(state())
+    print(init_state)
     ### Début stratégie joueur ###
     # séquence type :
     # (1) récupère l'état initial
