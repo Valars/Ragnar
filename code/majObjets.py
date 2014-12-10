@@ -29,17 +29,13 @@ def majPlateau(changements, plateau) :
 
         arete = None#arete sur laquelle se passe notre mouvement
         fromTo.append([move["from"],move["to"]])
-        for noeud in plateau["noeuds"] :
-            for ids in fromTo :
-                if ids[0] == noeud.id :#from = id du noeud actuel
-                    lefrom = noeud
-                if ids[1] == noeud.id :#to = id du noeud actuel
-                    leto = noeud
-
+        for ids in fromTo :
+            for ligne in plateau["lignes"] :
+                if ids[0] == ligne.noeud1.id or ids[0] == ligne.noeud2.id :#from = noeud1 de notre ligne
+                    if ids[1] == ligne.noeud1.id or ids[1] == ligne.noeud2.id :
+                        print(str(ligne.noeud1.id)+"-"+str(ligne.noeud2.id))
 
         objetsMouv.append(Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"]))
 
     #puis pour chaque mouvement de objetsMouv, mettre les aretes à jour dans plateau["lignes"]
     #un mouvement va dans une arete si destination
-    for ids from fromTo :
-        print(ids)
