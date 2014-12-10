@@ -27,13 +27,8 @@ def majPlateau(changements, plateau) :
             if noeud.id == iddestination :
                 destination = noeud
 
-        arete = None#arete sur laquelle se passe notre mouvement
-        fromTo.append([move["from"],move["to"]])
-        for ids in fromTo :
-            for ligne in plateau["lignes"] :
-                if ids[0] == ligne.noeud1.id or ids[0] == ligne.noeud2.id :#from = noeud1 de notre ligne
-                    if ids[1] == ligne.noeud1.id or ids[1] == ligne.noeud2.id :
-                        print(str(ligne.noeud1.id)+"-"+str(ligne.noeud2.id))
+        #maintenant on veut récupérer un objet arete de plateau["ligne"] en le désignant par les id des noeuds
+        #à faire donc, récupérer l'arete ayant pour extremités les noeuds d'id move["from"] et move["to"]
 
         objetsMouv.append(Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"]))
 
