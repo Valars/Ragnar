@@ -37,7 +37,8 @@ def play_pooo():
     logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
 
     init_state = parseState(state())
-    print(init_state)
+    majPlateau(init_state, partie.plateau)
+
     ### Début stratégie joueur ###
     # séquence type :
     # (1) récupère l'état initial
