@@ -13,7 +13,7 @@ retourne un objet Partie contenant toutes les infos contenues dans la chaine env
 
 def parseInit(chaine) :
     partie = Partie()
-    noeuds = []
+    noeuds = {}
     lignes = []
 
     touteslesinfos = re.findall("INIT(.+)TO[0-9]+\[([0-9]+)\];([0-9]+);[0-9]+CELLS:(.+);[0-9]+LINES:(.+)",chaine)
@@ -23,7 +23,7 @@ def parseInit(chaine) :
 
     for cell in cells :
         infos = re.findall("([0-9]+)\(([0-9]+),([0-9]+)\)'([0-9]+)'([0-9]+)'([0-9]+)'([I]+)",cell)
-        noeuds.append(Noeud(int(infos[0][0]), int(infos[0][1]), int(infos[0][2]), int(infos[0][3]), int(infos[0][4]), int(infos[0][5]), infos[0][6], -1, 0, 0, []))
+        noeuds[str(infos[0][0])] = Noeud(int(infos[0][0]), int(infos[0][1]), int(infos[0][2]), int(infos[0][3]), int(infos[0][4]), int(infos[0][5]), infos[0][6], -1, 0, 0, [])
 
     lines = re.findall('[0-9]+@[0-9]+OF[0-9]+',touteslesinfos[4])
 
@@ -31,11 +31,11 @@ def parseInit(chaine) :
         infoLigne = re.findall('([0-9]+)@([0-9]+)OF([0-9]+)', line)
         #infoLigne[0][0] = noeud1, 0 2 est le noeud2
 
-        for noeud in noeuds :
-            if noeud.id == int(infoLigne[0][0]) :
-                noeud1 = noeud
-            elif noeud.id == int(infoLigne[0][2]) :
-                noeud2 = noeud
+        for key in noeuds :
+            if int(key) == int(infoLigne[0][0]) :#la clé de notre dictionnaire pour chaque noeud est censé être son id !
+                noeud1 = noeuds[key]
+            elif int(key) == int(infoLigne[0][2]) :
+                noeud2 = noeuds[key]
 
         lignes.append(Arete(noeud1,noeud2,int(infoLigne[0][1])))
 

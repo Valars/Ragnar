@@ -6,12 +6,11 @@ def majPlateau(changements, plateau) :
     moves = changements["moves"]
 
     #   mettre à jour les off et deff et proprio des cellules
+    print(noeudsDyn)
     for noeudDyn in noeudsDyn :
-        for noeud in plateau["noeuds"] :
-            if noeud.id == noeudDyn["id"] :
-                noeud.off = noeudDyn["atk"]
-                noeud.defenses = noeudDyn["def"]
-                noeud.proprio = noeudDyn["owner"]
+        plateau["noeuds"][str(noeudDyn["id"])].off = noeudDyn["atk"]
+        plateau["noeuds"][str(noeudDyn["id"])].defenses = noeudDyn["def"]
+        plateau["noeuds"][str(noeudDyn["id"])].proprio = noeudDyn["owner"]
 
     #mettre a jour les aretes dans plateau["lignes"] pour ajouter les mouvements (objets à créer pour chaque move)
     objetsMouv = []
@@ -23,9 +22,9 @@ def majPlateau(changements, plateau) :
         else :
             iddestination = move["to"]
 
-        for noeud in plateau["noeuds"] :
-            if noeud.id == iddestination :
-                destination = noeud
+        for id in plateau["noeuds"] :
+            if int(id) == iddestination :
+                destination = plateau["noeuds"][id]
 
         #maintenant on veut récupérer un objet arete de plateau["ligne"] en le désignant par les id des noeuds
         #à faire donc, récupérer l'arete ayant pour extremités les noeuds d'id move["from"] et move["to"]
