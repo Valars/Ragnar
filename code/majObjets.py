@@ -6,7 +6,6 @@ def majPlateau(changements, plateau) :
     moves = changements["moves"]
 
     #   mettre à jour les off et deff et proprio des cellules
-    print(noeudsDyn)
     for noeudDyn in noeudsDyn :
         plateau["noeuds"][str(noeudDyn["id"])].off = noeudDyn["atk"]
         plateau["noeuds"][str(noeudDyn["id"])].defenses = noeudDyn["def"]
