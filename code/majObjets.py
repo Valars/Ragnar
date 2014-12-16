@@ -21,8 +21,7 @@ def majPlateau(changements, plateau) :
         else :
             iddestination = move["to"]
 
-        destination = plateau["noeuds"][str(move["to"])]#on récupère l'objet noeud via l'id grace au dictionaire qui stocke les noeuds du plateau
-
+        destination = plateau["noeuds"][str(iddestination)]#on récupère l'objet noeud via l'id grace au dictionaire qui stocke les noeuds du plateau
 
         #récupérer l'arete qui part  de move["from"] et qui va a move["to"]
         #lui mettre à jour son arete.mouvements pour y append Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"])
