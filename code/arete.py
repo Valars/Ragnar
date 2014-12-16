@@ -1,5 +1,5 @@
 class Arete :
-        def __init__(self, noeud1, noeud2, longueur, mouvements=[]) :
+        def __init__(self, noeud1, noeud2, longueur, mouvements) :
             self.noeud1 = noeud1
             self.noeud2 = noeud2
             self.longueur = longueur

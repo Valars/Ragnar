@@ -34,7 +34,7 @@ def parseInit(chaine) :
         noeud1 = noeuds[infoLigne[0][0]]
         noeud2 = noeuds[infoLigne[0][2]]
 
-        lignes[str(noeud1.id)+";"+str(noeud2.id)] = Arete(noeud1,noeud2,int(infoLigne[0][1]))
+        lignes[str(noeud1.id)+";"+str(noeud2.id)] = Arete(noeud1,noeud2,int(infoLigne[0][1]), [])
 
     partie.plateau = {"noeuds":noeuds,"lignes":lignes}
     partie.matchid = touteslesinfos[0]

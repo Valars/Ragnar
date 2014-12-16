@@ -31,7 +31,7 @@ def majPlateau(changements, plateau) :
 
         try :
             arete = plateau["lignes"][cle[0]]
-        except Exception:
+        except Exception :
             arete = plateau["lignes"][cle[1]]
 
         arete.mouvements.append(Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"]))
