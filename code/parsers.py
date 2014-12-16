@@ -14,7 +14,7 @@ retourne un objet Partie contenant toutes les infos contenues dans la chaine env
 def parseInit(chaine) :
     partie = Partie()
     noeuds = {}
-    lignes = []
+    lignes = {}
 
     touteslesinfos = re.findall("INIT(.+)TO[0-9]+\[([0-9]+)\];([0-9]+);[0-9]+CELLS:(.+);[0-9]+LINES:(.+)",chaine)
     touteslesinfos = touteslesinfos[0]
@@ -31,13 +31,10 @@ def parseInit(chaine) :
         infoLigne = re.findall('([0-9]+)@([0-9]+)OF([0-9]+)', line)
         #infoLigne[0][0] = noeud1, 0 2 est le noeud2
 
-        for key in noeuds :
-            if int(key) == int(infoLigne[0][0]) :#la clé de notre dictionnaire pour chaque noeud est censé être son id !
-                noeud1 = noeuds[key]
-            elif int(key) == int(infoLigne[0][2]) :
-                noeud2 = noeuds[key]
+        noeud1 = noeuds[infoLigne[0][0]]
+        noeud2 = noeuds[infoLigne[0][2]]
 
-        lignes.append(Arete(noeud1,noeud2,int(infoLigne[0][1])))
+        lignes[str(noeud1.id)+";"+str(noeud2.id)] = Arete(noeud1,noeud2,int(infoLigne[0][1]))
 
     partie.plateau = {"noeuds":noeuds,"lignes":lignes}
     partie.matchid = touteslesinfos[0]
@@ -45,9 +42,9 @@ def parseInit(chaine) :
     partie.me = int(touteslesinfos[1])
 
     #ajout des informations "aretesConnectees" dans chaque noeud
-    for ligne in partie.plateau["lignes"] :
-        ligne.noeud1.aretesConnectees.append(ligne)
-        ligne.noeud2.aretesConnectees.append(ligne)
+    for key in partie.plateau["lignes"] :
+        partie.plateau["lignes"][key].noeud1.aretesConnectees.append(partie.plateau["lignes"][key])
+        partie.plateau["lignes"][key].noeud2.aretesConnectees.append(partie.plateau["lignes"][key])
 
     return partie
 
