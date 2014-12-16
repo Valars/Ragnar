@@ -27,4 +27,11 @@ def majPlateau(changements, plateau) :
         #lui mettre à jour son arete.mouvements pour y append Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"])
 
         #récupérer un objet arete via les id des noeuds extremités :
-        objetsMouv.append(Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"]))
+        cle = [str(move["from"])+";"+str(move["to"]), str(move["to"])+";"+str(move["from"])]
+
+        try :
+            arete = plateau["lignes"][cle[0]]
+        except Exception:
+            arete = plateau["lignes"][cle[1]]
+
+        arete.mouvements.append(Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"]))
