@@ -39,7 +39,7 @@ def play_pooo():
     init_state = parseState(state())
     majPlateau(init_state, partie.plateau)
 
-
+    partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
 
     ### Début stratégie joueur ###
     # séquence type :
