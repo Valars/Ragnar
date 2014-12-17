@@ -15,7 +15,7 @@ def getArete(partie, idNoeud1, idNoeud2):
 E : partie : Partie : Instance de la partie en cours
     id     : Int    : Id du Noeud souhaité
     
-S :          : Arete  : réference vers le noeud souhaité
+S :        : Arete  : réference vers le noeud souhaité
 '''
 
 def getNoeud(partie, id) :
