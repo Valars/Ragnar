@@ -15,6 +15,7 @@ from partie import *
 from majObjets import *
 from getObjects import *
 from mouv import *
+from plusCourtChemin import *
 
 def state() :
     return "STATE20ac18ab-6d18-450e-94af-bee53fdc8fcaIS2;3CELLS:1[2]12'4,2[2]15'2,3[1]33'6;4MOVES:1<5[2]@232'>6[2]@488'>3[1]@4330'2,1<10[1]@2241'3"
@@ -41,10 +42,7 @@ def play_pooo():
     while True :
         #met à jour tous nos objets de plateau, noeuds, mouvements etc etc
         majPlateau(parseState(state()), partie.plateau)
-        
-        a=input()
-        if a == 'fin' :
-            break
+
         #---------------------#
         #-------Code IA-------#
         #---------------------#
@@ -66,16 +64,10 @@ def play_pooo():
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
-    #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
-
-    ### Début stratégie joueur ###
-    # séquence type :
-    # (1) récupère l'état initial
-    # init_state = state()
-    # (2) TODO: traitement de init_state
-    # (3) while True :
-    # (4)     state = state_on_update()
-    # (5)     TODO: traitement de state et transmission d'ordres order(msg)
+        #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
+        a = input()
+        if a == "fin" :
+            break
 
 
 register_pooo("0947e717-02a1-4d83-9470-a941b6e8ed07")
