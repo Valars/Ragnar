@@ -56,7 +56,11 @@ def play_pooo():
                         pour les lignes, la clé de chaque arete est "idnoeud1;idnoeud2"
                         par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]   
                         par exemple pour l'arete entre le noeud 1 et le noeud 3 : partie.plateau["lignes"]["1;3"]
-                                                                                    ou partie.plateau["lignes"]["3;1"]'''
+                                                                                    ou partie.plateau["lignes"]["3;1"]
+        Methodes utilisables :
+            getArete(partie, id1, id2) - retourne l'ojet arete correspondant
+            getNoeud(partie, id) - retourne l'objet noeud correspondant
+            mouv'''
         
         #---------------------#
         #-----Fin code IA-----#

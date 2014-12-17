@@ -1,3 +1,5 @@
+partie.plateau["lignes"]["3;1"]
+
 def getArete(partie, idNoeud1, idNoeud2):
     return partie.plateau["lignes"][str(idNoeud1)+";"+str(idNoeud2)]
     
