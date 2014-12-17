@@ -34,11 +34,16 @@ def play_pooo():
     """Active le robot-joueur
 
     """
-    logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
+    #logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
 
-    majPlateau(parseState(state()), partie.plateau)
-
-    partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
+    while True :
+        #met à jour tous nos objets de plateau, noeuds, mouvements etc etc   
+        majPlateau(parseState(state()), partie.plateau)
+        
+        a=input()        
+        if a == 'fin' :
+            break
+    #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
 
     ### Début stratégie joueur ###
     # séquence type :
