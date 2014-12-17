@@ -36,8 +36,7 @@ def play_pooo():
     """
     logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
 
-    init_state = parseState(state())
-    majPlateau(init_state, partie.plateau)
+    majPlateau(parseState(state()), partie.plateau)
 
     partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
 
