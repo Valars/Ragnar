@@ -14,6 +14,9 @@ def majPlateau(changements, plateau) :
     #mettre a jour les aretes dans plateau["lignes"] pour ajouter les mouvements (objets à créer pour chaque move)
     objetsMouv = []
     fromTo = []
+    for cleLigne in plateau["lignes"] :
+        plateau["lignes"][cleLigne].mouvements = []
+
     for move in moves :
         #destination, nbUnites, duree, joueur
         if move["direction"] == '<' :
