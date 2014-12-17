@@ -44,8 +44,9 @@ def parseInit(chaine) :
 
     #ajout des informations "aretesConnectees" dans chaque noeud
     for key in partie.plateau["lignes"] :
-        partie.plateau["lignes"][key].noeud1.aretesConnectees.append(partie.plateau["lignes"][key])
-        partie.plateau["lignes"][key].noeud2.aretesConnectees.append(partie.plateau["lignes"][key])
+        if partie.plateau["lignes"][key] not in partie.plateau["lignes"][key].noeud1.aretesConnectees :
+            partie.plateau["lignes"][key].noeud1.aretesConnectees.append(partie.plateau["lignes"][key])
+            partie.plateau["lignes"][key].noeud2.aretesConnectees.append(partie.plateau["lignes"][key])
 
     return partie
 
