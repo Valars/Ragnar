@@ -1,7 +1,7 @@
 Ce qu'il faut faire
 
 TODO :
-    - Définir les IA de chaque type de cellule (fournisseur, rusher, soldat)
+    - Définir les IA de chaque type de cellule (fournisseur, rusher, attaquant)
 
     - faire un prototype de merde qui se connecte au serveur, initialise une partie, fait un mouvement et constate
         qu'il s'est bien effectué
