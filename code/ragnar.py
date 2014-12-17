@@ -39,10 +39,10 @@ def play_pooo():
     #logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
 
     while True :
-        #met à jour tous nos objets de plateau, noeuds, mouvements etc etc   
+        #met à jour tous nos objets de plateau, noeuds, mouvements etc etc
         majPlateau(parseState(state()), partie.plateau)
         
-        a=input()        
+        a=input()
         if a == 'fin' :
             break
         #---------------------#
@@ -55,14 +55,14 @@ def play_pooo():
                     partie.plateau["lignes"]
                         qui sont deux dictionnaires, pour les noeuds, la clé de chaque noeud est son id (en string)
                         pour les lignes, la clé de chaque arete est "idnoeud1;idnoeud2"
-                        par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]   
+                        par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]
                         par exemple pour l'arete entre le noeud 1 et le noeud 3 : partie.plateau["lignes"]["1;3"]
                                                                                     ou partie.plateau["lignes"]["3;1"]
         Methodes utilisables :
             getArete(partie, id1, id2) - retourne l'ojet arete correspondant
             getNoeud(partie, id) - retourne l'objet noeud correspondant
             mouv(partie, expediteur, cible, units) - expediteur : objet noeud qui envoi, cible : objet noeud a qui on envoit, units : pourcentage des unités à envoyer'''
-        
+
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
