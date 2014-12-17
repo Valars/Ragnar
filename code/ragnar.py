@@ -60,7 +60,7 @@ def play_pooo():
         Methodes utilisables :
             getArete(partie, id1, id2) - retourne l'ojet arete correspondant
             getNoeud(partie, id) - retourne l'objet noeud correspondant
-            mouv'''
+            mouv(partie, expediteur, cible, units) - expediteur : objet noeud qui envoi, cible : objet noeud a qui on envoit, units : pourcentage des unités à envoyer'''
         
         #---------------------#
         #-----Fin code IA-----#
