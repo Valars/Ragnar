@@ -43,6 +43,14 @@ def play_pooo():
         a=input()        
         if a == 'fin' :
             break
+        #---------------------#
+        #-------Code IA-------#
+        #---------------------#
+        
+        
+        #---------------------#
+        #-----Fin code IA-----#
+        #---------------------#
     #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
 
     ### Début stratégie joueur ###
