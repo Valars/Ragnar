@@ -46,7 +46,16 @@ def play_pooo():
         #---------------------#
         #-------Code IA-------#
         #---------------------#
-        
+        '''Données utilisables :
+            partie
+                partie.plateau
+                    partie.plateau["noeuds"]
+                    partie.plateau["lignes"]
+                        qui sont deux dictionnaires, pour les noeuds, la clé de chaque noeud est son id (en string)
+                        pour les lignes, la clé de chaque arete est "idnoeud1;idnoeud2"
+                        par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]   
+                        par exemple pour l'arete entre le noeud 1 et le noeud 3 : partie.plateau["lignes"]["1;3"]
+                                                                                    ou partie.plateau["lignes"]["3;1"]'''
         
         #---------------------#
         #-----Fin code IA-----#
