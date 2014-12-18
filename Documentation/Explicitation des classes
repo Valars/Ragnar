@@ -25,6 +25,7 @@ Attributs : -id          : Int, identifiant (unique pour la partie) le noeud
             -effectifOff : Int, nombre d'unités offensives possedées
             -effectifDef : Int, nombre d'unités defensives possedées
             -listeArete  : Liste, contient les objets Arete connectés au noeud
+            -role        : Chaine de caracteres, définie le rôle du noeud, si il nous appartient, Fournisseur ou Rush ou Attaque
             
 
 
