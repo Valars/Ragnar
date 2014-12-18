@@ -4,3 +4,21 @@ voir pour fournisseurs si c'est ok
 voir pour rusher et pour attaquant
 
 se répartir des taches (lesquelles ? qui fait les IA ?)
+
+
+Ce qu'on y a vu : 
+
+    Idée de rajouter une structure dans les noeuds, afin d'enregistrer pour chaque autre noeud, le prochain noeud par lequel passer
+    pour aller le plus vite possible à chaque noeud, et aussi y stocker combien de temps ça prendra pour y aller
+    donc voir dijkstra --"
+    
+    ajout du role dans la structure noeud
+    
+    Ajout d'une nouvelle strcture en plus qui va stocker un peu comme pour les dangers, les noeuds qui VONT se faire capturer
+    
+    Redéfinition de l'IA d'un fournisseur voir IAFournisseur
+    
+    dans la fonction mouv : envoyer des unités sur une arete doit créer un objet mouvement sur l'arete directement comme il faut
+        pour que le mouvement soit pris en compte dans les décisions suivantes
+    
+    
