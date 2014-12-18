@@ -16,3 +16,36 @@ I = 0.5unité/sec         #
 II = 2/3 d'unité/sec     #
 III = 1u/sec             #
 ##########################
+
+A coder:
+
+    -la fonction de l'algo de dijkstra et ajouter la structure dans noeud
+        la fonction met a jour les 
+        Nom : initDistances(Partie)
+        
+    -La fonction qui met a jour la liste des dangers 
+        Nom : calculDanger(Partie)
+        
+    -la fonction qui met à jour la liste des cellules qui vont se faire capturés
+        Nom : calculCapturees(Partie)
+        
+    -La fonction qui remplit ou met a jour les trois listes fournisseurs rushers et attaquant
+        Nom : majRoles(Partie)
+        
+    -Creer les listes:  - des noeuds qui vont se faire capturer Nom : cellsCapturees 
+                            Les cellules qui vont se faire capturer ne doivent être QUE dans cells danger
+                            le niveau de danger est alors le total de ce qui arrive dans la tronche du noeud (sur les aretes, dans les mouvements)
+                            [[ref cell, danger],[ref cell, danger]]
+                        - des noeuds en dangers                 Nom : cellsDanger
+                            Attention une cellule qui va se faire capturer ne doit pas etre dans cellsDangers
+                            le niveau de danger est alors ce qui arrive sur le noeud (comme pour les cellules qui vont se faire capturer)
+                                + ce que les cellules ennemies adjacentes possèdent en "rab'"
+                        
+                        - des noeuds fournisseurs               Nom : fournisseurs
+                        - des noeuds rushers                    Nom : rushers
+                        - des noeuds attaquants                 Nom : attaquants
+    
+    -Mettre a jour la fonction mouv qui creera des instances de Mouvement correspondant aux infos qu'on envoi au serveur
+        Ne pas oublier de déduire le nombre d'unité de Noeud.atk
+        
+    -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
