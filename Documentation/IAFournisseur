@@ -1,60 +1,29 @@
-IA d'un fournisseur !!!
+IA d'un  fournisseur !!!
 
-Si une cellule VA se faire capturer / si une cellule  reçoit des ennemis au point qu'elle va passer à l'ennemi
-    alors les fournisseurs doivent s'organiser pour la sauver (du moins essayer)
-    Il faut donc déterminer de quels fournisseurs on va avoir besoin pour sauver cette (ces) cellules
-    VOIR I !
+liste = []
+for i in range(len(cellsCapturees // 2)):
+    A = cellsCaptures[i]
     
-Sinon
-    aucune cellule ne s'apprete à se faire capturer, on envoi une partie des renforts vers les dangers, le reste vers les
-    attaquants
+    pour chaque fournisseur f dans la liste des fournisseurs de laPartie à faire jouer :
+        liste.append([f,distanceEntreFetA])
 
-
-
-I : déterminer de qui on a besoin pour sauver une cellule grace à des fournisseurs
-
-    On part des fournisseurs les plus proches de la cellule qui va se faire capturer et pour chaque fournisseur du plus proche
-    au plus éloigné, on envoi ce qu'il faut pour compenser les forces ennemies (donc on envoi tout ce que le fournisseur possède s'il
-    faut !)
-    Pour trouver les fournisseurs dont on aura besoin, pour chaque arete dans aretesConnectees de A (le noeud qui va se faire capturer)
-    on prend le noeud (B) d'arrivée de l'arete, si B est dans la liste des fournisseurs, on lui fait envoyer des unites comme il faut sur
-    l'arete, et on l'enleve de la liste des fournisseurs s'il a envoyé tout ce qu'il possédait.
-    S'il n'a pas suffit pour sauver la cellule, alors on décrémente la force ennemie de ce qu'on vient d'envoyer, et on cherche le prochain
-    fournisseur
-        Ici on peut utiliser une  adaptation de l'algorithme A* (voir ragnar/code/plusCourtChemin.py)
-        
-    A : noeud à sauver
-    total : force ennemie
+    trier liste selon les distances du minimum au maximum (extraites du Noeud)
     
-    for arete in A.aretesConnectees :
-        if arete.noeud1 != A :
-            noeud = arete.noeud1
-        else :
-            noeud = arete.noeud2
-        if noeud in listeDesFournisseurs :
-            if noeud.atk > total :
-                envoyer(de noeud vers A, total+1 unités)
-            else :
-                envoyer(de noeud vers A, noeud.atk unités)
-                listeDesFournisseurs.pop(noeud)
-                total -= noeud.atk
-        if total <= 0 : 
-            break
-    
-    Là tous les fournisseurs adjacents à A ont aidé comme ils ont pu
-    
-    if total > 0 :
-        il faut continuer avec d'autres fournisseurs !
-        
-        donc pour chaque fournisseur restant dans listeDesFournisseurs :
-            calcul du plus court chemin de ce fournisseur vers A
-            on stock ce chemin et sa longueur
-            on trie les fournisseurs selon la longueur de ce plus court chemin (du plus court au plus long)
-        
-        puis pour chaque fournisseur (cette fois ils sont triés du plus proche au plus éloigné de A) :
-            envoyer ce que tu peut depuis ce fournisseur vers le prochain point vers A (on a stocké le plus court chemin)
-            enlever le noeud de la liste des fournisseurs s'il a envoyé tout ce qu'il avait
-        
-    if listeDesFournisseurs non vide :
-        il reste des fournisseurs dispo, on a pu envoyer ce qu'on pouvait pour sauver une ou des cellules
-        alors on aide les attaquants : envoyer ce qu'on a vers l'attaquant le plus proche
+    j = 0
+    total = différence des forces qui vont capturer notre noeud A (A.atk+A.def - lemouvementencours.nbUnites)
+    tant que j < len(liste) or total > 0 :
+        si f.atk - total >= 0 :
+            envoyer de f vers A total + (f.atk-total)/2
+            total -= total
+        sinon :
+            envoyer de f vers A f.atk unites
+            enlever f des noeuds de la liste
+            total -= f.atk
+        j++
+
+
+refaire pareil avec la liste des cellules en danger
+
+puis pour chaque fournisseur encore restant :
+    envoyer aux rushers si en début de partie
+    envoyer aux attaquants sinon
