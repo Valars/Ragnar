@@ -38,10 +38,9 @@ def play_pooo():
 
     """
     #logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
-
+    #met à jour tous nos objets de plateau, noeuds, mouvements etc etc
+    majPlateau(parseState(state()), partie.plateau)
     while True :
-        #met à jour tous nos objets de plateau, noeuds, mouvements etc etc
-        majPlateau(parseState(state()), partie.plateau)
 
         #---------------------#
         #-------Code IA-------#
