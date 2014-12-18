@@ -1,0 +1,14 @@
+Init : 
+    -On récupere la chaine de caractere et on crée les objets avec les infos disponibles
+    -On génere pour chaque noeud le tableau des plus cours chemin vers chaque autre noeud et leur temps de trajet :
+            ex : Noeud 1
+                Tableau :   [[cible1, noeud suivant, poids],
+                             [cible2, noeud suivant, poids]
+                             ...]
+    
+    
+Main :
+    -MAJ avec state
+    -While Not endofgame
+        MAJ Dangers et va se faire prendre 
+        
