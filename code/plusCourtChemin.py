@@ -2,6 +2,7 @@
 # from : noeud
 #to : noeud
 #retourne : liste de noeuds (plus court chemin entre from et to)
+#voir si on upgrade l'algorithme pour prendre en compte le poids des aretes (leur longueur) donc passer sur un dijkstra --"
 def plusCourtChemin(de, vers) :
     parcouru = []
     possibles = [de]
