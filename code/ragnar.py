@@ -2,7 +2,7 @@
 
 
 ## chargement de l'interface de communication avec le serveur
-#from poooc import order, state, state_on_update, etime
+from poooc import order, state, state_on_update, etime
 
 # mieux que des print partout
 import logging
@@ -16,10 +16,6 @@ from majObjets import *
 from getObjects import *
 from mouv import *
 from plusCourtChemin import *
-
-def state() :
-    return "STATE20ac18ab-6d18-450e-94af-bee53fdc8fcaIS2;3CELLS:1[2]12'4,2[2]15'2,3[1]33'6;4MOVES:1<5[2]@232'>6[2]@488'>3[1]@4330'2,1<10[1]@2241'3"
-
 
 def register_pooo(uid):
     global partie
@@ -67,8 +63,3 @@ def play_pooo():
         a = input()
         if a == "fin" :
             break
-
-
-register_pooo("0947e717-02a1-4d83-9470-a941b6e8ed07")
-init_pooo("INIT20ac18ab-6d18-450e-94af-bee53fdc8fcaTO6[2];1;3CELLS:1(23,9)'2'30'8'I,2(41,55)'1'30'8'II,3(23,103)'1'20'5'I;2LINES:1@3433OF2,1@6502OF3")
-play_pooo()
