@@ -19,6 +19,7 @@ from plusCourtChemin import *
 
 def register_pooo(uid):
     global partie
+    print(uid)
     partie = Partie("",uid)
 
 def init_pooo(init_string):
@@ -36,12 +37,14 @@ def play_pooo():
     #logging.info('Entering play_pooo fonction from {} module...'.format(inspect.currentframe().f_back.f_code.co_filename))
     #met à jour tous nos objets de plateau, noeuds, mouvements etc etc
     majPlateau(parseState(state()), partie.plateau)
-    while True :
 
+    while True :
+        majPlateau(parseState(state()), partie.plateau)
+        
         #---------------------#
         #-------Code IA-------#
         #---------------------#
-        '''Données utilisables :
+    '''Données utilisables :
             partie
                 partie.plateau
                     partie.plateau["noeuds"]
@@ -60,6 +63,3 @@ def play_pooo():
         #-----Fin code IA-----#
         #---------------------#
         #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
-        a = input()
-        if a == "fin" :
-            break
