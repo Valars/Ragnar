@@ -70,21 +70,23 @@ def parseState(chaine) :
 
     cells = re.findall("([0-9]+)\[([0-9]+)\]([0-9]+)'([0-9]+)", chaine)
     moves = re.findall("MOVES:(.*)", chaine)
-    moves = moves[0].split(',')
+
+    if moves != [] :
+        moves = moves[0].split(',')
 
     noeuds = []
     mouvements = []
     for cell in cells :
         noeuds.append({"id":int(cell[0]),"owner":int(cell[1]),"atk":int(cell[2]),"def":int(cell[3])})
 
-
-    for move in moves :
-        arcFrom = re.findall('^([0-9]+)', move)
-        arcTo = re.findall("'([0-9]+)$", move)
-        arcFrom = int(arcFrom[0])
-        arcTo = int(arcTo[0])
-        movesSurLarc = re.findall("([<>])([0-9]+)\[([0-9]+)\]@([0-9]+)", move)
-        for lemove in movesSurLarc :
-            mouvements.append({"from":arcFrom, "to":arcTo, "direction":lemove[0], "nbUnits":int(lemove[1]), "timestamp":int(lemove[3]), "joueur":int(lemove[2])})
+    if moves != [] :
+        for move in moves :
+            arcFrom = re.findall('^([0-9]+)', move)
+            arcTo = re.findall("'([0-9]+)$", move)
+            arcFrom = int(arcFrom[0])
+            arcTo = int(arcTo[0])
+            movesSurLarc = re.findall("([<>])([0-9]+)\[([0-9]+)\]@([0-9]+)", move)
+            for lemove in movesSurLarc :
+                mouvements.append({"from":arcFrom, "to":arcTo, "direction":lemove[0], "nbUnits":int(lemove[1]), "timestamp":int(lemove[3]), "joueur":int(lemove[2])})
 
     return {"noeuds":noeuds, "moves":mouvements}
