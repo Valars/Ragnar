@@ -47,6 +47,7 @@ class Noeud :
         print("#####")
 
     def afficher(self, canva) :
+        print("fonctionAfficherAppelée")
         couleurs = ["blue","red","green","yellow","orange"]
         if self.proprio == -1 :
             couleur = "white"
@@ -59,8 +60,6 @@ class Noeud :
 
         centrex = self.x + self.radius
         centrey = self.y + self.radius
-
-        print("x : "+str(self.x)+" y : "+str(self.y)+" radius : "+str(self.radius)+" centrex : "+str(centrex)+" centrey : "+str(centrey))
 
         canva.create_oval(self.x,self.y,self.x+self.radius*2,self.y+self.radius*2, fill=couleur, outline='black', width=1)#radius * 2 pour le diametre, *20 arbitrairement pour pouvoir avoir de la place dedans
 
