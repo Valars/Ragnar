@@ -10,10 +10,10 @@ class Arete :
             print("Longueur : "+str(self.longueur))
             print("#####")
 
-        def afficher(self, x,y,x1,y1,canva) :
-            canva.create_line(x,y,x1,y1)
-            textx = (x+x1)/2
-            texty =(y+y1)/2
+        def afficher(self, canva) :
+            canva.create_line(self.noeud1.x+self.noeud1.radius,self.noeud1.y+self.noeud1.radius,self.noeud2.x+self.noeud2.radius,self.noeud2.y+self.noeud2.radius)
+            textx = (self.noeud1.x+self.noeud1.radius+self.noeud2.x+self.noeud2.radius)/2
+            texty =(self.noeud1.y+self.noeud1.radius+self.noeud2.y+self.noeud2.radius)/2
             canva.create_text(textx,texty, text=str(self.longueur)+"ms", font=('Helvetica', 10))
 
             canva.pack()

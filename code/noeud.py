@@ -6,8 +6,8 @@ Attributs : id          : Int                   : identifiant (unique pour la pa
             y           : Int                   : coordonnée en ordonné du noeud (pour l'affichage graphique)
             radius      : Int                   : diametre du noeud (pour l'affichage graphique)
             offsize     : Int                   : nombre maximal d'unités offensives que la cellule peut posséder
-            defsize     : Int                   : nombre maximal d'unités défensives que la cellule peut posséder  
-            prod        : Float                 : production d'unité en unité/sec 
+            defsize     : Int                   : nombre maximal d'unités défensives que la cellule peut posséder
+            prod        : Float                 : production d'unité en unité/sec
             effectifOff : Int                   : nombre d'unités offensives possedées
             effectifDef : Int                   : nombre d'unités defensives possedées
             listeArete  : Liste                 : contient les objets Arete connectés au noeud
@@ -47,23 +47,26 @@ class Noeud :
         print("#####")
 
     def afficher(self, canva) :
-        if self.proprio == 0 :
-            couleur = 'white'
-        elif self.proprio == 1 :
-            couleur = 'blue'
-        elif self.proprio == -1 :
-            couleur = 'red'
+        couleurs = ["blue","red","green","yellow","orange"]
+        if self.proprio == -1 :
+            couleur = "white"
+        else :
+            couleur = couleurs[self.proprio]
 
-        coefRadius = 20#le rayon d'un noeud = 20 * son radius
-        fontSize = 5*self.radius
+        coefRadius = 0.5#le rayon d'un noeud = 20 * son radius
 
-        centrex = self.x + self.radius * coefRadius
-        centrey = self.y + self.radius * coefRadius
-        canva.create_oval(self.x,self.y,self.x+self.radius*2*coefRadius,self.y+self.radius*2*coefRadius, fill=couleur, outline='black', width=1)#radius * 2 pour le diametre, *20 arbitrairement pour pouvoir avoir de la place dedans
+        fontSize = 8
 
-        canva.create_text(centrex,centrey-self.radius*5,text=self.id,font=('Helvetica', fontSize))
+        centrex = self.x + self.radius
+        centrey = self.y + self.radius
+
+        print("x : "+str(self.x)+" y : "+str(self.y)+" radius : "+str(self.radius)+" centrex : "+str(centrex)+" centrey : "+str(centrey))
+
+        canva.create_oval(self.x,self.y,self.x+self.radius*2,self.y+self.radius*2, fill=couleur, outline='black', width=1)#radius * 2 pour le diametre, *20 arbitrairement pour pouvoir avoir de la place dedans
+
+        canva.create_text(centrex,centrey-20,text=self.id,font=('Helvetica', fontSize))
         canva.create_text(centrex,centrey,text='atk : ' + str(self.off)+"/"+str(self.offsize), font=('Helvetica', fontSize))
-        canva.create_text(centrex,centrey+self.radius*5,text='def : '+str(self.defenses)+"/"+str(self.defsize), font=('Helvetica', fontSize))
-        canva.create_text(centrex,centrey+self.radius*5*2, text=self.prod, font=('Helvetica', fontSize))
+        canva.create_text(centrex,centrey+20,text='def : '+str(self.defenses)+"/"+str(self.defsize), font=('Helvetica', fontSize))
+        canva.create_text(centrex,centrey+35, text=self.prod, font=('Helvetica', fontSize))
 
         canva.pack()
