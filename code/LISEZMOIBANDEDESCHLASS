@@ -1,0 +1,9 @@
+le serveur fonctionne désormais, je l'ai ajouté au c9 il est dans /code
+
+pour le faire fonctionner, il faut 5 consoles : 
+dans la premiere lancer 'python3 poooserver.py'
+dans chacune des autres, lancer un client comme suit : 'python3 pooobot.py -s 127.0.0.1:9876 -b ragnar nomdujoueur'
+où ragnar correspond au fichier ragnar.py (il faut bien mettre 'ragnar' et pas 'ragnar.py' cependant)
+
+une fois tout ce petit monde de lancé, la console avec le serveur devrait retourner que tout est bon pour elle
+il suffit d'y taper "init" pour lancer la partie, et tout le monde réagit :)
