@@ -10,10 +10,12 @@ Init :
 Main :
     -MAJ avec state
     -While Not endofgame
+        -stateonUpdate
         -MAJ Dangers et va se faire prendre 
         -MAJ role/type des cellules
+        
         -Traitement rusheurs
         -Traitement fournisseur
         -Traitement attaquants
-        -stateonUpdate
+
         
