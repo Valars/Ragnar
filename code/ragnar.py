@@ -4,9 +4,7 @@
 ## chargement de l'interface de communication avec le serveur
 from poooc import order, state, state_on_update, etime
 
-# mieux que des print partout
 import logging
-# pour faire de l'introspection
 import re
 import inspect
 from arete import *
@@ -38,11 +36,19 @@ def affichageGraphique(canva) :
         partie.plateau["noeuds"][cle].radius = 50
         partie.plateau["noeuds"][cle].afficher(canva)
 
+    aretesAffichees = []
+    offsety = 20
     for cle in partie.plateau["lignes"] :
-        partie.plateau["lignes"][cle].afficher(canva)
+        if cle not in aretesAffichees and cle[::-1] not in aretesAffichees :
+            aretesAffichees.append(cle)
+            partie.plateau["lignes"][cle].afficher(canva)
+            for mouvement in partie.plateau["lignes"][cle].mouvements :
+                canva.create_text(60,offsety,text="mouvement vers noeud"+str(mouvement.destination.id)+" de "+str(mouvement.nbUnites)+" de j"+str(mouvement.joueur),font=('Helvetica', 10),fill="red")
+                offsety += 11
 
 def play_pooo():
     global partie
+
     master = Tk()
     w = Canvas(master, width=800, height=800)
 
@@ -58,8 +64,10 @@ def play_pooo():
         affichageGraphique(w)
         w.update()
 
+        #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
         states = retourServeur.split("STATE")
+        #du coup arbitrairement on traite le premier state qu'il envoi
         unSeulState = "STATE"+states[1]
 
         majPlateau(parseState(unSeulState), partie.plateau)
