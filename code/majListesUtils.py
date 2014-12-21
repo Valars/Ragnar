@@ -30,3 +30,20 @@ def majRoles(partie) :
 
             noeuds[cle].role = role
     return {"rushers":rushers,"fournisseurs":fournisseurs,"attaquants":attaquants}
+
+
+'''
+    Prend en paramètre la partie (surtout le plateau qui est important)
+    Prend en second parametre notre liste de noeuds, qui nous appartiennent, ça fait gagner du temps, plutot que de retester tous les noeuds
+    ce qu'on fait déjà dans la fonction juste au dessus :)
+
+    retourne la liste des cellules en danger
+
+    une cellule en danger est une cellule attaquante ou rusher, qui si l'adversaire le voulait, pourrait être capturée
+    MAIS : la cellule pour l'instant ne va pas se faire capturer. Aucuns mouvements ne sont détectés dans sa direction qui pourrait la
+    faire passer à l'ennemi :) il y a juste un statu quo, la cellule peut se faire bouffer, mais l'adversaire ne le fait pas.
+'''
+def calculDangers(partie, nosNoeuds) :
+    cellulesEnDanger = []
+    for noeud in nosNoeuds :
+        #prendre tout ce qui se trouve à portée
