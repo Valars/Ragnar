@@ -16,6 +16,7 @@ from getObjects import *
 from mouv import *
 from plusCourtChemin import *
 from tkinter import *
+from majListesUtils import *
 
 def register_pooo(uid):
     global partie
@@ -60,9 +61,10 @@ def play_pooo():
     majPlateau(parseState(state()), partie.plateau)
 
     while True :
+        '''
         w.delete(ALL)
         affichageGraphique(w)
-        w.update()
+        w.update()'''
 
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
@@ -72,12 +74,17 @@ def play_pooo():
 
         majPlateau(parseState(unSeulState), partie.plateau)
 
-        for cle in partie.plateau["noeuds"] :
+        mesNoeuds = majRoles(partie)
+
+        #
+
+        #UNE IA DE MERDE (voir une SA - Stupidité Artificielle)
+        '''for cle in partie.plateau["noeuds"] :
             if partie.plateau["noeuds"][cle].proprio == partie.me :
                 noeud = partie.plateau["noeuds"][cle]
                 break
         mouv(partie, noeud, noeud.aretesConnectees[0].noeud2, 100)
-
+        '''
         #---------------------#
         #-------Code IA-------#
         #---------------------#
