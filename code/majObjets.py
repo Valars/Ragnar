@@ -4,7 +4,6 @@ def majPlateau(changements, plateau) :
 
     noeudsDyn = changements["noeuds"]
     moves = changements["moves"]
-
     #   mettre à jour les off et deff et proprio des cellules
     for noeudDyn in noeudsDyn :
         plateau["noeuds"][str(noeudDyn["id"])].off = noeudDyn["atk"]
@@ -25,7 +24,6 @@ def majPlateau(changements, plateau) :
             iddestination = move["to"]
 
         destination = plateau["noeuds"][str(iddestination)]#on récupère l'objet noeud via l'id grace au dictionaire qui stocke les noeuds du plateau
-
         #récupérer l'arete qui part  de move["from"] et qui va a move["to"]
         #lui mettre à jour son arete.mouvements pour y append Mouvement(destination, move["nbUnits"], move["timestamp"], move["joueur"])
 

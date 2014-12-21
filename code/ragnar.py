@@ -7,6 +7,7 @@ from poooc import order, state, state_on_update, etime
 # mieux que des print partout
 import logging
 # pour faire de l'introspection
+import re
 import inspect
 from arete import *
 from noeud import *
@@ -20,12 +21,10 @@ from tkinter import *
 
 def register_pooo(uid):
     global partie
-    print(uid)
     partie = Partie("",uid)
 
 def init_pooo(init_string):
     global partie
-    print(init_string)
     uid = partie.uid
     partie = parseInit(init_string)
     partie.uid = uid
@@ -41,9 +40,6 @@ def affichageGraphique(canva) :
 
     for cle in partie.plateau["lignes"] :
         partie.plateau["lignes"][cle].afficher(canva)
-
-#def state() :
-#    return "STATEa16a58c2-81f0-4982-990b-ae4fdbcbd4ecIS2;7CELLS:0[0]5'0,1[-1]6'0,2[-1]6'0,3[-1]12'0,4[-1]6'0,5[-1]6'0,6[1]5'0;0MOVES"
 
 def play_pooo():
     global partie
@@ -61,9 +57,18 @@ def play_pooo():
         w.delete(ALL)
         affichageGraphique(w)
         w.update()
-        #ne marche qu'avec un input() ici !!!
 
-        majPlateau(parseState(state_on_update()), partie.plateau)
+        retourServeur = state_on_update()
+        states = retourServeur.split("STATE")
+        unSeulState = "STATE"+states[1]
+
+        majPlateau(parseState(unSeulState), partie.plateau)
+
+        for cle in partie.plateau["noeuds"] :
+            if partie.plateau["noeuds"][cle].proprio == partie.me :
+                noeud = partie.plateau["noeuds"][cle]
+                break
+        mouv(partie, noeud, noeud.aretesConnectees[0].noeud2, 100)
 
         #---------------------#
         #-------Code IA-------#
@@ -86,7 +91,3 @@ def play_pooo():
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
-        #partie.detailPlateau()#affichage du détail du plateau pour vérifier que tout est bien linké !
-#register_pooo("amoii-45-qdfd")
-#init_pooo("INITa16a58c2-81f0-4982-990b-ae4fdbcbd4ecTO2[0];2;7CELLS:0(0,0)'100'30'8'I,1(0,5)'100'30'8'I,2(5,0)'100'30'8'I,3(5,5)'200'30'8'II,4(5,10)'100'30'8'I,5(10,5)'100'30'8'I,6(10,10)'100'30'8'I;6LINES:0@4800OF2,0@4800OF1,2@4700OF3,3@4700OF4,4@4800OF6,5@4800OF6")
-#play_pooo()
