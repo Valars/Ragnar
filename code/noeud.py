@@ -47,7 +47,6 @@ class Noeud :
         print("#####")
 
     def afficher(self, canva) :
-        print("fonctionAfficherAppelée")
         couleurs = ["blue","red","green","yellow","orange"]
         if self.proprio == -1 :
             couleur = "white"

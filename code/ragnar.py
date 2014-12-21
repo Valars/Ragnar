@@ -60,7 +60,7 @@ def play_pooo():
     while True :
         w.delete(ALL)
         affichageGraphique(w)
-
+        w.update()
         #ne marche qu'avec un input() ici !!!
 
         majPlateau(parseState(state_on_update()), partie.plateau)
