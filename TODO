@@ -24,12 +24,20 @@ A coder:
         Nom : initDistances(Partie)
         Guillaume à l'air de s'en occuper ? (- virgile)
         
+        ################################################################################
     -La fonction qui met a jour la liste des dangers 
         Nom : calculDanger(Partie)
         Je m'en occupe ! -Virgile
         
     -la fonction qui met à jour la liste des cellules qui vont se faire capturer
         Nom : calculCapturees(Partie)
+        Je m'en occupe ! -Virgile
+        En fait je vais fusionner les deux fonctions ci dessus en une seule, c'est plus facile à coder et plus performant
+        (car if vaSeFaireCapturer : ajouterAlaliste des "vont se faire capturer"
+                else :
+                        alors peut être t'es en danger
+                :) )
+        #################################################################################
         
                  +La fonction qui remplit ou met a jour les trois listes fournisseurs rushers et attaquant
                          Nom : majRoles(Partie)
