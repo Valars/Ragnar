@@ -75,7 +75,13 @@ def play_pooo():
         majPlateau(parseState(unSeulState), partie.plateau)
 
         mesNoeuds = majRoles(partie)
-        cellulesEnDanger = calculDangers(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
+        cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
+
+        cellsDanger = cellulesEnDangerOuCapturees["dangers"]
+        cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
+
+        print(cellsDanger)
+        print(cellsCapturees)
         #
 
         #UNE IA DE MERDE (voir une SA - Stupidité Artificielle)
