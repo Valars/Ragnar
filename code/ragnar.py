@@ -76,12 +76,19 @@ def play_pooo():
 
         mesNoeuds = majRoles(partie)
         #utiliser mesNoeuds["rushers"], mesNoeuds["fournisseurs"] et mesNoeuds["attaquants"] :)
-        print(mesNoeuds["rushers"])
+        print("######### MES RUSHERS ############")
+        for noeud in mesNoeuds["rushers"] :
+            print(noeud.id)
+        print("##################################")
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
 
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
 
+
+
+
+        ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
             for ligne in noeud.aretesConnectees :
                 if ligne.noeud1 == noeud :
