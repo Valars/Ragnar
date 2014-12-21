@@ -79,10 +79,7 @@ def play_pooo():
 
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-
-        print(cellsDanger)
-        print(cellsCapturees)
-        #
+        
 
         #UNE IA DE MERDE (voir une SA - Stupidité Artificielle)
         '''for cle in partie.plateau["noeuds"] :
