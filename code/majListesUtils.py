@@ -20,7 +20,7 @@ def majRoles(partie) :
                     role = 'rusher'
                     rushers.append(noeuds[cle])
                     break#pas la peine d'aller plus loin, on a trouvé un neutre à proximité, notre cellule est un rusher
-                elif ligne.neud1.proprio != partie.me or ligne.noeud2.proprio != partie.me : #si on a un ennemi à proximité
+                elif ligne.noeud1.proprio != partie.me or ligne.noeud2.proprio != partie.me : #si on a un ennemi à proximité
                     role = "attaquant"
                     attaquants.append(noeuds[cle])
                     break#on arrete les frais, si on est pas un rusher, on a pas de neutre à proximité, donc dés qu'on a un ennemi, c'est qu'on est attaquant

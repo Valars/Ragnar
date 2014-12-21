@@ -61,10 +61,10 @@ def play_pooo():
     majPlateau(parseState(state()), partie.plateau)
 
     while True :
-        '''
+
         w.delete(ALL)
         affichageGraphique(w)
-        w.update()'''
+        w.update()
 
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
@@ -75,19 +75,22 @@ def play_pooo():
         majPlateau(parseState(unSeulState), partie.plateau)
 
         mesNoeuds = majRoles(partie)
+        #utiliser mesNoeuds["rushers"], mesNoeuds["fournisseurs"] et mesNoeuds["attaquants"] :)
+        print(mesNoeuds["rushers"])
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
 
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-        
 
-        #UNE IA DE MERDE (voir une SA - Stupidité Artificielle)
-        '''for cle in partie.plateau["noeuds"] :
-            if partie.plateau["noeuds"][cle].proprio == partie.me :
-                noeud = partie.plateau["noeuds"][cle]
-                break
-        mouv(partie, noeud, noeud.aretesConnectees[0].noeud2, 100)
-        '''
+        for noeud in mesNoeuds["rushers"] :
+            for ligne in noeud.aretesConnectees :
+                if ligne.noeud1 == noeud :
+                    voisin = ligne.noeud2
+                else :
+                    voisin = ligne.noeud1
+                if voisin not in (mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"]) and noeud.off > 0:
+                    mouv(partie,noeud,voisin,100//len(noeud.aretesConnectees))
+
         #---------------------#
         #-------Code IA-------#
         #---------------------#
@@ -101,6 +104,14 @@ def play_pooo():
                         par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]
                         par exemple pour l'arete entre le noeud 1 et le noeud 3 : partie.plateau["lignes"]["1;3"]
                                                                                     ou partie.plateau["lignes"]["3;1"]
+            mesNoeuds
+                mesNoeuds["rushers"] : liste d'objets noeuds rushers
+                mesNoeuds["fournisseurs"] : liste d'objets noeuds fournisseurs
+                mesNoeuds["attaquants"] : liste d'objets noeuds attaquants
+
+            cellsDanger : liste d'objets noeuds qui sont des cellules à nous et en danger
+            cellsCapturees : liste d'objets noeuds qui sont des cellules qui vont se faire capturer si on ne fait rien pour les sauver
+
         Methodes utilisables :
             getArete(partie, id1, id2) - retourne l'ojet arete correspondant
             getNoeud(partie, id) - retourne l'objet noeud correspondant
