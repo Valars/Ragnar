@@ -22,15 +22,17 @@ A coder:
     -la fonction de l'algo de dijkstra et ajouter la structure dans noeud
         la fonction met a jour les 
         Nom : initDistances(Partie)
+        Guillaume à l'air de s'en occuper ? (- virgile)
         
     -La fonction qui met a jour la liste des dangers 
         Nom : calculDanger(Partie)
         
-    -la fonction qui met à jour la liste des cellules qui vont se faire capturés
+    -la fonction qui met à jour la liste des cellules qui vont se faire capturer
         Nom : calculCapturees(Partie)
         
     -La fonction qui remplit ou met a jour les trois listes fournisseurs rushers et attaquant
         Nom : majRoles(Partie)
+        Je m'en occupe ! -Virgile
         
     -Creer les listes:  - des noeuds qui vont se faire capturer Nom : cellsCapturees 
                             Les cellules qui vont se faire capturer ne doivent être QUE dans cells danger
