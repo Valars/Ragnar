@@ -43,7 +43,7 @@ def affichageGraphique(canva) :
             aretesAffichees.append(cle)
             partie.plateau["lignes"][cle].afficher(canva)
             for mouvement in partie.plateau["lignes"][cle].mouvements :
-                canva.create_text(60,offsety,text="mouvement vers noeud"+str(mouvement.destination.id)+" de "+str(mouvement.nbUnites)+" de j"+str(mouvement.joueur),font=('Helvetica', 10),fill="red")
+                canva.create_text(120,offsety,text="mouvement vers noeud"+str(mouvement.destination.id)+" de "+str(mouvement.nbUnites)+" de j"+str(mouvement.joueur),font=('Helvetica', 10),fill="red")
                 offsety += 11
 
 def play_pooo():
