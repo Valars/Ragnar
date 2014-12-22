@@ -78,12 +78,11 @@ def play_pooo():
         majPlateau(parseState(unSeulState), partie.plateau)
 
         mesNoeuds = majRoles(partie)
-        #utiliser mesNoeuds["rushers"], mesNoeuds["fournisseurs"] et mesNoeuds["attaquants"] :)
-        print("######### MES RUSHERS ############")
-        print(len(mesNoeuds["rushers"]))
-        print("##################################")
-        cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
+        print("PLUS COURT CHEMIN DE 1 à 5 (premier noeud a suivre + distance jusqua 5)")
+        print(dijkstra(partie,partie.plateau["noeuds"]["1"],partie.plateau["noeuds"]["5"]))
+        print("##########################")
 
+        cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
 
