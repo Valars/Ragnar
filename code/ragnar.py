@@ -70,15 +70,17 @@ def play_pooo():
         retourServeur = state_on_update()
         states = retourServeur.split("STATE")
         #du coup arbitrairement on traite le premier state qu'il envoi
-        unSeulState = "STATE"+states[1]
+        try :
+            unSeulState = "STATE"+states[1]
+        except Exception :
+            break   #si on n'arrive pas à trouver un state, c'est qu'on à fini la partie (endofgame), on sort de play_pooo
 
         majPlateau(parseState(unSeulState), partie.plateau)
 
         mesNoeuds = majRoles(partie)
         #utiliser mesNoeuds["rushers"], mesNoeuds["fournisseurs"] et mesNoeuds["attaquants"] :)
         print("######### MES RUSHERS ############")
-        for noeud in mesNoeuds["rushers"] :
-            print(noeud.id)
+        print(len(mesNoeuds["rushers"]))
         print("##################################")
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
 
