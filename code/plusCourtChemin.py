@@ -27,3 +27,8 @@ def plusCourtChemin(de, vers) :
             possibles.pop(0)
         courant = possibles[0]
     return parcouru
+
+'''
+    deuxieme version : il faut prendre en compte la pondération
+    la fonction doit retourner le prochain noeud sur le plus court chemin de A vers B, ainsi que la durée du parcours total entre A et B
+'''
