@@ -24,8 +24,5 @@ A coder:
         la fonction met a jour les 
         Nom : initDistances(Partie)
         Guillaume à l'air de s'en occuper ? (- virgile)
-        
-    -Mettre a jour la fonction mouv qui creera des instances de Mouvement correspondant aux infos qu'on envoi au serveur
-        Ne pas oublier de déduire le nombre d'unité de Noeud.atk
-        
+
     -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
