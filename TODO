@@ -20,9 +20,8 @@ III = 1u/sec             #
         /!\ JE MET A JOUR CE QUE JE FAIT VRAIMENT EN TEMPS REEL /!\ -Virgile 
         comprendre si un truc n'est plus présent dans la liste, c'est que je l'ai fait --"
 A coder:
-
-    -la fonction de l'algo de dijkstra et ajouter la structure dans noeud
-        la fonction met a jour les 
+    
+    - ajouter la structure dans noeud avec les plus courts chemins pour chaque noeud !
         Nom : initDistances(Partie)
         Guillaume à l'air de s'en occuper ? (- virgile)
 
