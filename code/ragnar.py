@@ -103,7 +103,7 @@ def play_pooo():
         #-------Code IA-------#
         #---------------------#
     '''Données utilisables :
-            partie
+            # partie
                 partie.plateau
                     partie.plateau["noeuds"]
                     partie.plateau["lignes"]
@@ -112,19 +112,28 @@ def play_pooo():
                         par exemple pour le noeud d'id 2 : partie.plateau["noeuds"]["2"]
                         par exemple pour l'arete entre le noeud 1 et le noeud 3 : partie.plateau["lignes"]["1;3"]
                                                                                     ou partie.plateau["lignes"]["3;1"]
-            mesNoeuds
+            # mesNoeuds
                 mesNoeuds["rushers"] : liste d'objets noeuds rushers
                 mesNoeuds["fournisseurs"] : liste d'objets noeuds fournisseurs
                 mesNoeuds["attaquants"] : liste d'objets noeuds attaquants
 
-            cellsDanger : liste d'objets noeuds qui sont des cellules à nous et en danger
-            cellsCapturees : liste d'objets noeuds qui sont des cellules qui vont se faire capturer si on ne fait rien pour les sauver
+            # cellsDanger : liste d'objets noeuds qui sont des cellules à nous et en danger
+
+            # cellsCapturees : liste d'objets noeuds qui sont des cellules qui vont se faire capturer si on ne fait rien pour les sauver
 
         Methodes utilisables :
-            getArete(partie, id1, id2) - retourne l'ojet arete correspondant
-            getNoeud(partie, id) - retourne l'objet noeud correspondant
-            mouv(partie, expediteur, cible, units) - expediteur : objet noeud qui envoi, cible : objet noeud a qui on envoit, units : pourcentage des unités à envoyer'''
+            # getArete(partie, id1, id2) - retourne l'ojet arete correspondant
 
+            # getNoeud(partie, id) - retourne l'objet noeud correspondant
+
+            # mouv(partie, expediteur, cible, units) - expediteur : objet noeud qui envoi, cible : objet noeud a qui on envoit, units : pourcentage des unités à envoyer
+
+            # dijkstra(partie,noeud1,noeud2) - noeud1 et noeud2 sont des objets noeud - retourne un dictionnaire :
+                retour["chemin"] : liste des id des noeuds qui forment le plus court chemin de noeud1 vers noeud2
+                    (ex : [1,2,3,4] pour le chemin de 1 à 4 (donc 1 et 4 sont inclus dans cette liste du plus court chemin !) donc liste d'entiers)
+                retour["longueur"] : longueur totale du chemin le plus court entre noeud1 et noeud2 (entier donc)
+                    ex : 28600
+        '''
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
