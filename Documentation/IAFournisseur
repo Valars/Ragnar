@@ -25,5 +25,5 @@ for i in range(len(cellsCapturees // 2)):
 refaire pareil avec la liste des cellules en danger
 
 puis pour chaque fournisseur encore restant :
-    envoyer aux rushers si en début de partie
-    envoyer aux attaquants sinon
+    envoyer aux rushers proches si en début de partie
+    envoyer aux attaquants proches sinon
