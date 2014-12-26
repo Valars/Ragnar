@@ -21,8 +21,25 @@ III = 1u/sec             #
         comprendre si un truc n'est plus présent dans la liste, c'est que je l'ai fait --"
 A coder:
     
-    - ajouter la structure dans noeud avec les plus courts chemins pour chaque noeud !
+    -  (Guillaume) Ajouter la structure dans noeud avec les plus courts chemins pour chaque noeud !
         Nom : initDistances(Partie)
-        Guillaume à l'air de s'en occuper ? (- virgile)
-
+       En cours : Essai d'algorithme de routage par vecteur de distance.
+        ==> J'essaye de pondre ça pour dimanche dernier délai (\o/)
+        
+        Notes perso:
+        Pour mon algo semble marcher correctement et a une faible complexité :
+        
+        Si on procède avec l'algo de Dijsktra : ( n:nbNoeuds, m:nbAretes)
+                Le plus court chemin de A à B : O( (m+n)*ln(n) )
+                => Pour chaque voisin de A : O ( (n-1)*(m+n)*ln(n) )
+                => Pour chaque noeud du graphe : O( n*(n-1)*(m+n)*ln(n) )
+        
+        Avec mon algo de routage, si je ne me trompe pas : O(n + n² + 2n^3)
+        
+        Si on compare sur un graphe de 10 noeuds et 20 aretes :
+                - Dijkstra : env 6000 opérations
+                - Moi : env 2000 opérations
+        
+        ==> Donc à priori, mon algo de routage est plus rapide. 
+        Je continue de tester tout ça et je vous le montre dès que je pense que ça tient la route !
     -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
