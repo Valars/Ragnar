@@ -1,29 +1,68 @@
-IA d'un  fournisseur !!!
 
-liste = []
-for i in range(len(cellsCapturees // 2)):
-    A = cellsCaptures[i]
-    
-    pour chaque fournisseur f dans la liste des fournisseurs de laPartie à faire jouer :
-        liste.append([f,distanceEntreFetA])
+Ci dessous l'ia d'un fournisseur en pseudo code presque codable, il manque plus que la structure pour stocker les distances entre les noeuds
+et les plus courts chemins !
 
-    trier liste selon les distances du minimum au maximum (extraites du Noeud)
+#####################################################################################################################################
+#####################################################################################################################################
+#####################################################################################################################################
+
+pour celluleCapturée in listeCellulesquivontsefairecapturer[::len(listeDesCellulesQuiVontSeFaireCapturer)//2] :
+    total = total des forces qui arrivent sur mon noeud pour le bouffer, moins celluleCapturée.atk moins celluleCapturée.defenses
+    #normalement le total est déjà dans la liste des cellules en capturées
     
-    j = 0
-    total = différence des forces qui vont capturer notre noeud A (A.atk+A.def - lemouvementencours.nbUnites)
-    tant que j < len(liste) or total > 0 :
-        si f.atk - total >= 0 :
-            envoyer de f vers A total + (f.atk-total)/2
+    #la il faut trier les fournisseurs suivant la distance à notre celluleCapturée
+    #voir donc suivant la structure que guillaume propose pour stocker les distances selon les noeuds
+    #le but étant d'avoir une liste de noeuds, ou d'id de noeuds peu importe, indiquant l'ordre des noeuds du plus proche au plus loin
+    #de notre celluleCapturée
+    
+    i=0
+    while total > 0 and i < len(listeDesNoeuds) :
+        if listeDesNoeuds[i].atk - total > 0 #si notre noeud suffit pour sauver le noeud
+            envoyer de listeDeNoeuds[i] vers prochain noeud sur le chemin vers celluleCapturée : total+(listeDeNoeuds[i].atk-total)/2
             total -= total
-        sinon :
-            envoyer de f vers A f.atk unites
-            enlever f des noeuds de la liste
-            total -= f.atk
-        j++
+        else :
+            envoyer de listeDesNoeuds[i] vers celluleCapturée listeDesNoeuds[i].atk unités
+            enlever listeDesNoeuds[i] de la liste des fournisseurs à faire jouer
+            total -= listeDesNoeuds[i].atk
+        i++
 
-
-refaire pareil avec la liste des cellules en danger
-
-puis pour chaque fournisseur encore restant :
-    envoyer aux rushers proches si en début de partie
-    envoyer aux attaquants proches sinon
+pour celluleEnDanger in listeDesCellulesEnDanger[::len(listeDesCellulesEnDanger)//2] :
+    total = niveau de danger de la cellule, déjà stocké dans la structure normalement
+    
+    #la il faut trier les fournisseurs suivant la distance à notre cellule en danger
+    #voir donc suivant la structure que guillaume propose pour stocker les distances selon les noeuds
+    #le but étant d'avoir une liste de noeuds, ou d'id de noeuds peu importe, indiquant l'ordre des noeuds du plus proche au plus loin
+    #de notre celluleEnDanger
+    
+    i=0
+    while total > 0 and i < len(listeDesNoeudsTriés) :
+        if listeDesNoeuds[i].atk - total > 0 : #si on a assez de notre noeud pour mettre la cellule hors de danger
+            envoyer de listeDesNoeuds[i] vers prochain noeud vers celluleEnDanger total unités + (noeud.atk-total)/2
+            total -= total
+        else :
+            envoyer de listeDesNoeuds[i] vers prochain noeud vers celluleEnDanger listeDesNoeuds[i].atk
+            total -= listeDesNoeuds[i].atk
+            enlever listeDesNoeuds[i] de la liste des noeuds à faire jouer (il a tout donner)
+        i++
+        
+#puis il reste peut être des fournisseurs à faire jouer !
+#si on est en début de partie, envoyer vers les rushers
+#début de partie = plus de la moitié des noeuds sont neutres
+# récupérer le nombre de neutres
+nbrNeutres = 0
+for noeud in partie.plateau["noeuds"] :
+    if noeud.proprio = -1 :
+        nbrNeutres++
+if nbrNeutres >= len(partie.plateau["noeuds"])//2 - 1 :
+    debutDePartie = True
+pour chaque fournisseur restant à jouer dans la liste (on en a enlevé précedemment) :
+    if debutDePartie :
+        pour dist in fournisseur.distances :
+            if id du noeud vers lequel on va désigne un noeud rusher :
+                envoyer de notre fournisseur vers ce noeud fournisseur.atk, enlever notre fournisseur de notre liste
+    else :#pas début de partie
+        envoyer vers un attaquant
+    
+    
+    
+    
