@@ -64,7 +64,7 @@ def play_pooo():
 
         w.delete(ALL)
         affichageGraphique(w)
-        w.update()
+        w.update_idletasks()
 
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
