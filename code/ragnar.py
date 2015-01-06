@@ -51,8 +51,8 @@ def affichageGraphique(canva) :
 def play_pooo():
     global partie
 
-    master = Tk()
-    w = Canvas(master, width=800, height=800)
+    #master = Tk()
+    #w = Canvas(master, width=800, height=800)
 
     """Active le robot-joueur
 
@@ -63,9 +63,9 @@ def play_pooo():
 
     while True :
 
-        w.delete(ALL)
-        affichageGraphique(w)
-        w.update_idletasks()
+        #w.delete(ALL)
+        #affichageGraphique(w)
+        #w.update_idletasks()
 
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
