@@ -23,7 +23,7 @@ def parseInit(chaine) :
 
     for cell in cells :
         infos = re.findall("([0-9]+)\(([0-9]+),([0-9]+)\)'([0-9]+)'([0-9]+)'([0-9]+)'([I]+)",cell)
-        noeuds[str(infos[0][0])] = Noeud(int(infos[0][0]), int(infos[0][1]), int(infos[0][2]), int(infos[0][3]), int(infos[0][4]), int(infos[0][5]), infos[0][6], -1, 0, 0, [])
+        noeuds[str(infos[0][0])] = Noeud(int(infos[0][0]), int(infos[0][1]), int(infos[0][2]), int(infos[0][3]), int(infos[0][4]), int(infos[0][5]), infos[0][6], -1, 0, 0, [], "",  {})
 
     lines = re.findall('[0-9]+@[0-9]+OF[0-9]+',touteslesinfos[4])
 

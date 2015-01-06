@@ -16,7 +16,7 @@ Attributs : id          : Int                   : identifiant (unique pour la pa
 '''
 
 class Noeud :
-    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[], role = "", distances = []) :
+    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[], role = "", distances = {}) :
         self.id = id
         self.proprio = proprio
         self.x = x

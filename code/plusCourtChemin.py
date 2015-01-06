@@ -3,7 +3,7 @@ from partie import *
 from noeud import *
 '''
     Nom : dijkstra (partie, de, vers)
-    
+
     E : partie : Partie : L'objet partie, qui contient le plateau de jeu
         de     : Noeud  : Noeud d'origine, début du chemin
         vers   : Noeud  : Noeud de fin, d'arrivée du chemin
@@ -25,7 +25,7 @@ def dijkstra(partie, de, vers) :
         precedences[str(partie.plateau["noeuds"][cle].id)] = 0
     #on met la distance du noeud dont on part à 0 :)
     distances[str(de.id)] = 0
-
+    i=0
     #tant qu'on a pas parcouru tous nos noeuds
     while nonParcourus != {} :
         #récupérer le noeud ayant la distance la plus petite positive
@@ -35,7 +35,13 @@ def dijkstra(partie, de, vers) :
             if distances[cle] >= 0 and distMin < distances[cle] :
                 distMin = distances[cle]
                 aParcourir = getNoeud(partie, int(cle))
+
         #enlever aParcourir de nonParcourus
+        '''
+        print("##################################")
+        print(nonParcourus)
+        print("on voulait enlever : "+str(aParcourir.id))
+        '''
         del nonParcourus[str(aParcourir.id)]
 
         #pour chaque voisin de aParcourir :
@@ -44,7 +50,8 @@ def dijkstra(partie, de, vers) :
             if distances[str(voisin.id)] < 0 or distances[str(voisin.id)] > distances[str(aParcourir.id)] + partie.plateau["lignes"][str(aParcourir.id)+";"+str(voisin.id)].longueur :
                 distances[str(voisin.id)] = distances[str(aParcourir.id)] + partie.plateau["lignes"][str(aParcourir.id)+";"+str(voisin.id)].longueur
                 precedences[str(voisin.id)] = aParcourir.id
-
+        #print(str(i)+" - a parcourir : "+str(aParcourir.id))
+        i+=1
     chemin = []
     n = vers.id
     while n != de.id :
@@ -59,17 +66,17 @@ def dijkstra(partie, de, vers) :
 
 '''
     Nom : calc_distance() (partie, noeud)
-    
+
     E : partie : Partie : L'objet partie, qui contient le plateau de jeu
         noeud     : Noeud  : Noeud pour lequel on veut déterminer le plus court chemin vers les autres noeuds
 
 '''
-def calc_distance(partie):
-    
-    for noeud_debut in partie.plateau["noeud"]:
-        for noeud_fin in partie.plateau["noeud"]:
+def calc_distances(partie):
+    #print(dijkstra(partie, partie.plateau["noeuds"]["1"], partie.plateau["noeuds"]["5"]))
+    for noeud_debut in partie.plateau["noeuds"]:
+        for noeud_fin in partie.plateau["noeuds"]:
+            print("#############################################################")
+            print("distance de "+noeud_debut+" vers "+noeud_fin)
             if(noeud_debut != noeud_fin):
-                plus_court_chem = dijkstra(partie, noeud_debut, noeud_fin)
-                
-                noeud_debut.distances[str(noeud_fin.id)]= [plus_court_chem['chemin'], plus_court_chem['longueur']]
-    
+                print(dijkstra(partie, partie.plateau["noeuds"][noeud_debut], partie.plateau["noeuds"][noeud_fin]))
+                #partie.plateau["noeuds"][noeud_debut].distances[str(partie.plateau["noeuds"][noeud_fin].id)]= [plus_court_chem['chemin'], plus_court_chem['longueur']]

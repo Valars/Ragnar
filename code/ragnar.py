@@ -27,6 +27,7 @@ def init_pooo(init_string):
     uid = partie.uid
     partie = parseInit(init_string)
     partie.uid = uid
+    calc_distances(partie)
 
 def affichageGraphique(canva) :
     global partie
@@ -78,14 +79,10 @@ def play_pooo():
         majPlateau(parseState(unSeulState), partie.plateau)
 
         mesNoeuds = majRoles(partie)
-        print("PLUS COURT CHEMIN DE 1 à 5 (premier noeud a suivre + distance jusqua 5)")
-        print(dijkstra(partie,partie.plateau["noeuds"]["1"],partie.plateau["noeuds"]["5"]))
-        print("##########################")
 
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-
 
 
 
