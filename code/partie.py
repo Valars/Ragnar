@@ -1,9 +1,9 @@
 '''Nom : Partie
 
 Attributs : matchid : Chaine de caractères : Identifiant de la partie
-            userid  : Chaine de caractères : Identifiant du joueur pour tout le tournoi
-            player  : Int                  : Identifiant du joueur dans la partie
-            vitesse : Int                  : Donne la vitesse du jeu (Hypothétique)
+            uid     : Chaine de caractères : Identifiant du joueur pour tout le tournoi
+            me      : Int                  : Identifiant du joueur dans la partie
+            speed   : Int                  : Donne la vitesse du jeu (Hypothétique)
             plateau : Liste                : Contient la liste des objets Noeud ainsi que la liste des objets Arete de
                                               tout le plateau
                                               pour être précis : le plateau se décompose en deux : plateau["noeuds"] et plateau["lignes"]

@@ -1,16 +1,16 @@
 from getObjects import *
-
+from partie import *
+from noeud import *
 '''
-    dijkstra(partie,de,vers)
-    Entrées :
-        partie :    l'objet partie, qui contient le plateau de jeu
-        de :        un objet noeud duquel on part
-        vers :      un objet noeud, vers lequel on va
+    Nom : dijkstra (partie, de, vers)
+    
+    E : partie : Partie : L'objet partie, qui contient le plateau de jeu
+        de     : Noeud  : Noeud d'origine, début du chemin
+        vers   : Noeud  : Noeud de fin, d'arrivée du chemin
 
-    Sorties :
-        un dictionnaire à deux indices :
-            "chemin" :      liste des id des noeuds parcourus étant sur le chemin le plus court du noeud 'de' vers le noeud 'vers'
-            "longueur" :    distance totale entre le noeud 'de' et le noeud 'vers' sur le chemin le plus court
+    S:         : Liste  :  un dictionnaire à deux indices :
+                            "chemin" :      liste des id des noeuds parcourus étant sur le chemin le plus court du noeud 'de' vers le noeud 'vers'
+                            "longueur" :    distance totale entre le noeud 'de' et le noeud 'vers' sur le chemin le plus court
 '''
 
 def dijkstra(partie, de, vers) :
@@ -56,3 +56,20 @@ def dijkstra(partie, de, vers) :
     distanceTotale = distances[str(vers.id)]
 
     return {"chemin" : chemin, "longueur" : distanceTotale}
+
+'''
+    Nom : calc_distance() (partie, noeud)
+    
+    E : partie : Partie : L'objet partie, qui contient le plateau de jeu
+        noeud     : Noeud  : Noeud pour lequel on veut déterminer le plus court chemin vers les autres noeuds
+
+'''
+def calc_distance(partie):
+    
+    for noeud_debut in partie.plateau["noeud"]:
+        for noeud_fin in partie.plateau["noeud"]:
+            if(noeud_debut != noeud_fin):
+                plus_court_chem = dijkstra(partie, noeud_debut, noeud_fin)
+                
+                noeud_debut.distances[str(noeud_fin.id)]= [plus_court_chem['chemin'], plus_court_chem['longueur']]
+    

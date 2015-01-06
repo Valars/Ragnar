@@ -1,15 +1,16 @@
 pour chaque rusher :
-    récupérer la liste des neutres à proximité du rusher
-    pour chaque neutre de cette liste :
-        récupérer le total des forces ennemies qui arrivent sur cette cellule neutre - neutre.atk - neutre.defenses (total)
-        if rusher.atk > total :
-            envoyer de rusher vers la neutre en question total+1 unités
-        else :
-            envoyer rusher.atk vers la neutre en question
-            break #pas la peine d'essayer de capturer les neutres suivantes, on a tout envoyé !
-    
-    if rusher.atk > 0 : #on a capturé toutes les neutres qui étaient à portée, et il nous reste un peu d'unités
-        if on a des ennemis à proximités :
-            ne rien envoyer, on garde nos unités au cas où
-        else : #on a pas d'ennemis à proximité !
-            envoyer vers l'attaquant le plus proche ?
+    si le rusher not in listeDesCellulesQuiVontSeFaireCapturer :
+        récupérer la liste des neutres à proximité du rusher
+        pour chaque neutre de cette liste :
+            récupérer le total des forces ennemies qui arrivent sur cette cellule neutre - neutre.atk - neutre.defenses (total)
+            if rusher.atk > total :
+                envoyer de rusher vers la neutre en question total+1 unités
+            else :
+                envoyer rusher.atk vers la neutre en question
+                break #pas la peine d'essayer de capturer les neutres suivantes, on a tout envoyé !
+        
+        if rusher.atk > 0 : #on a capturé toutes les neutres qui étaient à portée, et il nous reste un peu d'unités
+            if on a des ennemis à proximités :
+                ne rien envoyer, on garde nos unités au cas où
+            else : #on a pas d'ennemis à proximité !
+                envoyer vers l'attaquant le plus proche ?

@@ -1,7 +1,8 @@
-'''
-    Prend en paramètres la partie (le plateau surtout)
-    Met à jour le rôle de nos cellules et retourne une liste de 3 listes :
-        la liste de nos rushers, de nos fournisseurs, et de nos attaquants
+''' Nom : majRoles(partie):
+        
+    E : laPartie   : Partie : Informations de bases sur la partie en cours
+
+    S :            : Liste  : Liste des trois listes de Noeud correspondantent aux "rushers", "fournisseurs" et "attaquants"
 '''
 
 def majRoles(partie) :
@@ -42,6 +43,14 @@ def majRoles(partie) :
     une cellule en danger est une cellule attaquante ou rusher, qui si l'adversaire le voulait, pourrait être capturée
     MAIS : la cellule pour l'instant ne va pas se faire capturer. Aucuns mouvements ne sont détectés dans sa direction qui pourrait la
     faire passer à l'ennemi :) il y a juste un statu quo, la cellule peut se faire bouffer, mais l'adversaire ne le fait pas.
+'''
+
+''' Nom : calculDangersCapturees(partie, nosNoeuds):
+        
+    E : laPartie   : Partie : Informations de bases sur la partie en cours
+        nosNoeuds  : Liste  : Liste de nos noeuds (rushers+fournisseurs+attaquants)
+
+    S :            : Liste  : Liste des deux listes de Noeud correspondantent aux cellules en danger ("dangers") et celles qui vont etre capturees ("capturees")
 '''
 def calculDangersCapturees(partie, nosNoeuds) :
     cellulesEnDanger = []

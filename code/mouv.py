@@ -20,5 +20,5 @@ def mouv(partie, expediteur, cible, units):
 
     order("["+str(partie.uid)+"]MOV"+str(units)+"FROM"+str(expediteur.id)+"TO"+str(cible.id))
     arete = getArete(partie, expediteur.id, cible.id)
-    arete.mouvements.append(Mouvement(cible, expediteur.off//units//100, etime(), expediteur.proprio))
-    expediteur.off = expediteur.off - expediteur.off//units//100 #on enleve ce qu'on a envoyé
+    arete.mouvements.append(Mouvement(cible, expediteur.off*units//100, etime(), expediteur.proprio))
+    expediteur.off = expediteur.off - (expediteur.off*units//100) #on enleve ce qu'on a envoyé

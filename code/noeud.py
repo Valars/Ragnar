@@ -12,10 +12,11 @@ Attributs : id          : Int                   : identifiant (unique pour la pa
             effectifDef : Int                   : nombre d'unités defensives possedées
             listeArete  : Liste                 : contient les objets Arete connectés au noeud
             role        : Chaine de caractères  : Role du noeud, si il nous appartient, Fournisseur ou Rush ou Attaque
+            distances   : Liste                 : Liste des autres noeuds, du chemin pour l'atteindre selon dijkstra et la "longueur" du chemin
 '''
 
 class Noeud :
-    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[], role = "") :
+    def __init__(self, id, x, y, radius, offsize, defsize, prod, proprio=-1,off=0,defenses=0,aretesConnectees=[], role = "", distances = []) :
         self.id = id
         self.proprio = proprio
         self.x = x
@@ -28,6 +29,7 @@ class Noeud :
         self.defenses = defenses
         self.aretesConnectees = aretesConnectees
         self.role = role
+        self.distances = distances
 
     def printNoeud(self) :
         print("Noeud "+str(self.id))

@@ -23,6 +23,7 @@ def getNoeud(partie, id) :
 
 ''' Nom : getVoisins()
 E : noeud : objet Noeud dont on veut obtenir les noeuds voisins
+
 S : Liste : liste d'objets Noeud, qui sont les voisins de l'entrée noeud
 '''
 def getVoisins(noeud) :

@@ -22,6 +22,8 @@ III = 1u/sec             #
 A coder:
     
     -  (Guillaume) Ajouter la structure dans noeud avec les plus courts chemins pour chaque noeud !
+                Romain : pour dijkstra il ne serait pas plus simple de ressortir directement les données sous la forme donnée dans "déroulement générale"?
+                        Parce qu'on utilise uniquement le noeud suivant le noeud de départ et pas tout le chemin
         Nom : initDistances(Partie)
        En cours : Essai d'algorithme de routage par vecteur de distance.
         
