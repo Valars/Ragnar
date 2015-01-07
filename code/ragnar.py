@@ -51,8 +51,8 @@ def affichageGraphique(canva) :
 def play_pooo():
     global partie
 
-    #master = Tk()
-    #w = Canvas(master, width=800, height=800)
+    master = Tk()
+    w = Canvas(master, width=800, height=800)
 
     """Active le robot-joueur
 
@@ -63,14 +63,18 @@ def play_pooo():
 
     while True :
 
-        #w.delete(ALL)
-        #affichageGraphique(w)
-        #w.update_idletasks()
+        w.delete(ALL)
+        affichageGraphique(w)
+        w.update_idletasks()
 
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
+
         states = retourServeur.split("STATE")
+
         #du coup arbitrairement on traite le premier state qu'il envoi
+        if states[0] != '' :
+            break
         try :
             unSeulState = "STATE"+states[1]
         except Exception :
@@ -83,8 +87,6 @@ def play_pooo():
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-
-
 
         ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
@@ -134,3 +136,4 @@ def play_pooo():
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
+    master.destroy()

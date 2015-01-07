@@ -3,6 +3,7 @@ from noeud import *
 from arete import *
 from partie import *
 from mouvement import *
+import time
 
 '''
 parseInit :
