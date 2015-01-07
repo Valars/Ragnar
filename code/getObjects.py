@@ -34,3 +34,6 @@ def getVoisins(noeud) :
         else :
             voisins.append(ligne.noeud1)
     return voisins
+
+def getDistance(noeud1, noeud2) :
+    return noeud1.distances[str(noeud2.id)]
