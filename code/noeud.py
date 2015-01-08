@@ -1,18 +1,21 @@
 '''Nom : Noeud
 
-Attributs : id          : Int                   : identifiant (unique pour la partie) le noeud
-            proprio     : Int                   : identifiant de partie(cf. Partie.player) du joueur propriétaire du noeud
-            x           : Int                   : coordonnée en abscisse du noeud (pour l'affichage graphique)
-            y           : Int                   : coordonnée en ordonné du noeud (pour l'affichage graphique)
-            radius      : Int                   : diametre du noeud (pour l'affichage graphique)
-            offsize     : Int                   : nombre maximal d'unités offensives que la cellule peut posséder
-            defsize     : Int                   : nombre maximal d'unités défensives que la cellule peut posséder
-            prod        : Float                 : production d'unité en unité/sec
-            effectifOff : Int                   : nombre d'unités offensives possedées
-            effectifDef : Int                   : nombre d'unités defensives possedées
-            listeArete  : Liste                 : contient les objets Arete connectés au noeud
-            role        : Chaine de caractères  : Role du noeud, si il nous appartient, Fournisseur ou Rush ou Attaque
-            distances   : Liste                 : Liste des autres noeuds, du chemin pour l'atteindre selon dijkstra et la "longueur" du chemin
+Attributs : id                : Int                   : identifiant (unique pour la partie) le noeud
+            proprio           : Int                   : identifiant de partie(cf. Partie.player) du joueur propriétaire du noeud
+            x                 : Int                   : coordonnée en abscisse du noeud (pour l'affichage graphique)
+            y                 : Int                   : coordonnée en ordonné du noeud (pour l'affichage graphique)
+            radius            : Int                   : diametre du noeud (pour l'affichage graphique)
+            offsize           : Int                   : nombre maximal d'unités offensives que la cellule peut posséder
+            defsize           : Int                   : nombre maximal d'unités défensives que la cellule peut posséder
+            prod              : Float                 : production d'unité en unité/sec
+            off               : Int                   : nombre d'unités offensives possedées
+            defenses          : Int                   : nombre d'unités defensives possedées
+            aretesConnectees  : Liste                 : contient les objets Arete connectés au noeud
+            role              : Chaine de caractères  : Role du noeud, si il nous appartient, Fournisseur ou Rush ou Attaque
+            distances         : Dictionnaire          : Les clés sont l'id des noeuds cible==> noeud 5 ["1" : [[5,...,1], 5800], "2" : [[5,.... 
+                                                    Donc pour l'acces à la distance du noeud 1 : noeud5.distance["1"][1]
+                                                                    au deuxieme noeud sur le chemin du noeud 2 : noeud5.distance["2"][0][1]
+            
 '''
 
 class Noeud :
@@ -70,3 +73,4 @@ class Noeud :
         canva.create_text(centrex,centrey+35, text=self.prod, font=('Helvetica', fontSize))
 
         canva.pack()
+
