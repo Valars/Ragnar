@@ -21,14 +21,19 @@ III = 1u/sec             #
         comprendre si un truc n'est plus présent dans la liste, c'est que je l'ai fait --"
 A coder:
     
-    -  (Guillaume) Ajouter la structure dans noeud avec les plus courts chemins pour chaque noeud !
-                Romain : pour dijkstra il ne serait pas plus simple de ressortir directement les données sous la forme donnée dans "déroulement générale"?
-                        Parce qu'on utilise uniquement le noeud suivant le noeud de départ et pas tout le chemin
-        Nom : initDistances(Partie)
-       En cours : Essai d'algorithme de routage par vecteur de distance.
-        
-        MAJ 29/12/2014 :
-        ----------------
-        J'ai retravaillé mon algo sur papier et j(a
-        
+    - modifier le parser init pour enregistrer les productions en unités par seconde (I = 0.5, II=2/3, III=1)
+    - coder des fonctions :
+        peutEnvoyer(noeud) : retourne le nombre d'unités d'atk que peut envoyer noeud, en prenant en compte
+            ce qu'il possède, ce qui lui arrive dans la gueule et ses défenses
+            
+        doitEnvoyer(noeud1, noeud2) : retourne combien d'unités noeud1 doit envoyer pour capturer noeud2
+            ne fonctionne que si noeud1 et noeud2 sont voisins
+            prend en compte l'attaque de noeud2, ses défenses, ce qui lui arrive en renfort, ce qu'il a envoyé vers noeud1
+                et ce qu'on a déjà envoyé de noeud1 vers noeud2
+                
+        peutCapturer(n1,n2)
+            return True/False si n1 peut capturer n2
+            ne fonctionne que si n1 et n2 voisins
+            
     -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
+    -Coder l'ia rusher cf IARusher
