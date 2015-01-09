@@ -22,6 +22,7 @@ III = 1u/sec             #
 A coder:
     
     - modifier le parser init pour enregistrer les productions en unités par seconde (I = 0.5, II=2/3, III=1)
+    - voir le pourquoi du comment du bug du serveur a la fin d'un match
     - coder des fonctions :
         peutEnvoyer(noeud) : retourne le nombre d'unités d'atk que peut envoyer noeud, en prenant en compte
             ce qu'il possède, ce qui lui arrive dans la gueule et ses défenses
