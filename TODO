@@ -34,6 +34,7 @@ A coder:
         peutCapturer(n1,n2)
             return True/False si n1 peut capturer n2
             ne fonctionne que si n1 et n2 voisins
-            
+    
+    -Coder l'ia rusher cf IARusher        
     -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
-    -Coder l'ia rusher cf IARusher
+    
