@@ -23,6 +23,9 @@ def register_pooo(uid):
     partie = Partie("",uid)
 
 def init_pooo(init_string):
+    print("###########################################")
+    print(init_string)
+    print("###########################################")
     global partie
     uid = partie.uid
     partie = parseInit(init_string)
@@ -70,15 +73,22 @@ def play_pooo():
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
 
-        states = retourServeur.split("STATE")
-
-        #du coup arbitrairement on traite le premier state qu'il envoi
-        if states[0] != '' :
-            break
-        try :
-            unSeulState = "STATE"+states[1]
-        except Exception :
-            break   #si on n'arrive pas à trouver un state, c'est qu'on à fini la partie (endofgame), on sort de play_pooo
+        endofgame = retourServeur.split("ENDOFGAME")
+        if endofgame[0] == '' :
+            print("#############ENDOFGAME########")
+            print("#############ENDOFGAME########")
+            print("#############ENDOFGAME########")
+            master.destroy()
+            return 0
+        gameover = retourServeur.split("GAMEOVER")
+        if gameover[0] == '' :
+            print("#############GAMEOVER##########")
+            print("#############GAMEOVER##########")
+            print("#############GAMEOVER##########")
+            master.destroy()
+            return 0
+        unSeulState = retourServeur.split('STATE')
+        unSeulState = 'STATE'+unSeulState[1]
 
         majPlateau(parseState(unSeulState), partie.plateau)
 
@@ -136,4 +146,3 @@ def play_pooo():
         #---------------------#
         #-----Fin code IA-----#
         #---------------------#
-    master.destroy()
