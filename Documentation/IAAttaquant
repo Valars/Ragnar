@@ -1,0 +1,9 @@
+
+essayer de sauver 1 noeud parmis ceux dans la liste des "vont se faire capturer"
+    envoyer juste ce qu'il faut pour le sauver
+avec ce qu'il lui reste : attaquer
+    si un seul noeud ennemi à portée : l'attaque lui (envoyer tout)
+    sinon
+        si on peut capturer un des ennemis, on y va (on envoi tout !)
+        sinon
+            on poke le plus rentable

@@ -6,45 +6,12 @@ et les plus courts chemins !
 #####################################################################################################################################
 #####################################################################################################################################
 
-pour celluleCapturée in listeCellulesquivontsefairecapturer[::len(listeDesCellulesQuiVontSeFaireCapturer)//2] :
-    total = total des forces qui arrivent sur mon noeud pour le bouffer, moins celluleCapturée.atk moins celluleCapturée.defenses
-    #normalement le total est déjà dans la liste des cellules en capturées
+Pour chaque noeud in noeudsEnDanger :
+    noeudsTriés = list(noeudsEnDanger) #copie de la liste des dangers
+    trier la liste noeudsTriés selon le plus "rentable" qu'il faudrait sauver #voir iarusher, faire quasi pareil
+    envoyer vers le premier noeud de cette liste (voir le prochain noeud dans ses distances)
+        juste de quoi le sortir des dangers
     
-    #la il faut trier les fournisseurs suivant la distance à notre celluleCapturée
-    #voir donc suivant la structure que guillaume propose pour stocker les distances selon les noeuds
-    #le but étant d'avoir une liste de noeuds, ou d'id de noeuds peu importe, indiquant l'ordre des noeuds du plus proche au plus loin
-    #de notre celluleCapturée
-    
-    i=0
-    while total > 0 and i < len(listeDesNoeuds) :
-        if listeDesNoeuds[i].atk - total > 0 #si notre noeud suffit pour sauver le noeud
-            envoyer de listeDeNoeuds[i] vers prochain noeud sur le chemin vers celluleCapturée : total+(listeDeNoeuds[i].atk-total)/2
-            total -= total
-        else :
-            envoyer de listeDesNoeuds[i] vers celluleCapturée listeDesNoeuds[i].atk unités
-            enlever listeDesNoeuds[i] de la liste des fournisseurs à faire jouer
-            total -= listeDesNoeuds[i].atk
-        i++
-
-pour celluleEnDanger in listeDesCellulesEnDanger[::len(listeDesCellulesEnDanger)//2] :
-    total = niveau de danger de la cellule, déjà stocké dans la structure normalement
-    
-    #la il faut trier les fournisseurs suivant la distance à notre cellule en danger
-    #voir donc suivant la structure que guillaume propose pour stocker les distances selon les noeuds
-    #le but étant d'avoir une liste de noeuds, ou d'id de noeuds peu importe, indiquant l'ordre des noeuds du plus proche au plus loin
-    #de notre celluleEnDanger
-    
-    i=0
-    while total > 0 and i < len(listeDesNoeudsTriés) :
-        if listeDesNoeuds[i].atk - total > 0 : #si on a assez de notre noeud pour mettre la cellule hors de danger
-            envoyer de listeDesNoeuds[i] vers prochain noeud vers celluleEnDanger total unités + (noeud.atk-total)/2
-            total -= total
-        else :
-            envoyer de listeDesNoeuds[i] vers prochain noeud vers celluleEnDanger listeDesNoeuds[i].atk
-            total -= listeDesNoeuds[i].atk
-            enlever listeDesNoeuds[i] de la liste des noeuds à faire jouer (il a tout donner)
-        i++
-        
 #puis il reste peut être des fournisseurs à faire jouer !
 #si on est en début de partie, envoyer vers les rushers
 #début de partie = plus de la moitié des noeuds sont neutres
@@ -62,7 +29,17 @@ pour chaque fournisseur restant à jouer dans la liste (on en a enlevé précede
                 envoyer de notre fournisseur vers ce noeud fournisseur.atk, enlever notre fournisseur de notre liste
     else :#pas début de partie
         envoyer vers un attaquant
-    
+
+
+#########################################################################################
+#########################################################################################
+
+faire des fonctions IAFournisseur(partie, monFournisseur)
+IARusher(partie, monRusher)
+...
+et utiliser for fournisseur in listeFournisseurs :
+                IAFournisseur(partie, fournisseur)
+
     
     
     

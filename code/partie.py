@@ -24,7 +24,7 @@ class Partie :
 
     def printPartie(self) :
         print(self.uid+"@"+self.matchid)
-        print("vitesse : "+str(self.speed)+" je suis le joueur "+str(me))
+        print("vitesse : "+str(self.speed)+" je suis le joueur "+str(self.me))
 
     def detailPlateau(self) :
         print("NOEUDS")

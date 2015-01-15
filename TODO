@@ -1,7 +1,21 @@
 Ce qu'il faut faire
 
 TODO :
-    - Définir les IA de chaque type de cellule (fournisseur, rusher, attaquant) - En cours (fournisseur presque fini)
+    coder les fonctions qu'il reste à faire (triNoeudsDistances notamment)
+    Regarder s'il n'y a pas de problème lors d'envois d'unités vers des noeuds "pleins"
+    Refaire la maj des listes en danger/ va se faire capturer
+        va se faire capturer :
+            A =
+            - ce qui nous arrive dans la gueule
+            + ce qu'on a (atk+def)
+            + ce qu'on reçoit comme renforts
+            + ce qu'on va produire le temps que les ennemis arrivent
+        en danger :
+            si (A + mon noeud .prod * l'arete la plus petite.longueur) - somme(l'attaque des ennemis à portée) < 0 :
+                je suis en danger
+                
+                
+    commencer à coder les IA
 
     
     
@@ -16,26 +30,9 @@ II = 2/3 d'unité/sec     #
 III = 1u/sec             #
 ##########################
 
-
-        /!\ JE MET A JOUR CE QUE JE FAIT VRAIMENT EN TEMPS REEL /!\ -Virgile 
-        comprendre si un truc n'est plus présent dans la liste, c'est que je l'ai fait --"
-A coder:
-    
-    - voir le pourquoi du comment du bug du serveur a la fin d'un match
-    
     - coder des fonctions :
-        peutEnvoyer(noeud) : retourne le nombre d'unités d'atk que peut envoyer noeud, en prenant en compte
-            ce qu'il possède, ce qui lui arrive dans la gueule et ses défenses
-            
-        doitEnvoyer(noeud1, noeud2) : retourne combien d'unités noeud1 doit envoyer pour capturer noeud2
-            ne fonctionne que si noeud1 et noeud2 sont voisins
-            prend en compte l'attaque de noeud2, ses défenses, ce qui lui arrive en renfort, ce qu'il a envoyé vers noeud1
-                et ce qu'on a déjà envoyé de noeud1 vers noeud2
-                
-        peutCapturer(n1,n2)
-            return True/False si n1 peut capturer n2
-            ne fonctionne que si n1 et n2 voisins
+        
+        triNoeudsDistances(listeNoeuds, noeudReferent) : prend la liste des noeuds listeNoeuds et les trie du plus proche au plus
+            éloigné du noeud noeudRéferent
     
-    -Coder l'ia rusher cf IARusher        
-    -Coder l'ia fournisseur en fonction du pseudo code cf file IAFournisseur
     
