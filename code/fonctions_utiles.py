@@ -38,33 +38,58 @@ def peutEnvoyer(noeud):
     
     S : a_envoyer  : Int  : Nombre d'unités nécessaire pour capturer le noeud défenseur depuis le noeud attaquant
 '''
-def doitEnvoyer(partie, noeud_attaquant, noeud_defenseur):
+def doitEnvoyer(partie, noeud1, noeud2):
     
-    total_noeud_off = noeud_defenseur.off     #total des unités dispos dans le noeud + production + renfort en cours
-    total_noeud_def = noeud_defenseur.defensives   #total des unites deff dispos + production
-    total_from_us = 0
-    total_from_other = 0
+    temps_trajet_arete = getArete(partie, noeud1.id, noeud2.id).longueur/1000
+    
+    total_noeud2_off = noeud2.off + temps_trajet_arete*noeud2.prod      #total des unités dispos dans le noeud + production + renfort en cours
+    
+    total_noeud2_def = noeud2.defensives   #total des unites deff dispos + production
+    
+    a_ = 0
+    
+    if ( noeud2.proprio != -1) :
+        
+        #a envoyer 
+        #Faire une liste des mouvements en cours vers     
+        
+    else : 
+        
+        
+        
+        
+        
+        
+    
+    total_proprio_noeud1 = 0
+    
+     = 0
+     
+    
     a_envoyer = 0
     
-    for arete in noeud_defenseur.aretesConnectees:
+    for arete in noeud2.aretesConnectees:
         for mouvement in arete.mouvements :
             
-            if (mouvement.destination == noeud_defenseur.id):
+            if (mouvement.destination == noeud2.id):
                 
-                if (mouvement.joueur == noeud_defenseur.proprio) :
+                if (mouvement.joueur == noeud2.proprio) :
+                    
                     total_noeud += mouvement.nbUnites
-                elif (mouvement.joueur == partie.me) :
+                    
+                elif (mouvement.joueur == noeud1.proprio) :
+                    
                     total_from_us += mouvement.nbUnites
                 else :
                     total_from_other += mouvement.nbUnites
             
-            if (mouvement.destination == noeud_attaquant.id and ):
+            if (mouvement.destination == noeud1.id and ):
                 total_noeud += mouvement.nbUnites
     
-    if(noeud_defenseur.proprio != -1):
-        if(total_noeud - noeud_defenseur.defensives != 30):
-        arete_entre_noeuds = getArete(partie, noeud_attaquant.id, noeud_defenseur.id)
-        total_noeud += arete_entre_noeuds.longueur / 1000 * (noeud_defenseur.prod) #Ajout de la production des noeud attaquants durent le trajet
+    if(noeud2.proprio != -1):
+        if(total_noeud - noeud2.defensives != 30):
+        arete_entre_noeuds = getArete(partie, noeud1.id, noeud2.id)
+        total_noeud += arete_entre_noeuds.longueur / 1000 * (noeud2.prod) #Ajout de la production des noeud attaquants durent le trajet
         
     #ajouter les unités produites par le noeud défenseur pendant le trajet
         #unités offensive produites = arete.taille/1000* production_attaque
@@ -100,4 +125,17 @@ def peutCapturer(partie, noeud_attaquant, noeud_defenseur):
     else : reponse = False
     
     return [reponse, units_necessaires]
+    
+    
+def triNoeudsDistances(listeNoeuds, noeudDistant) :
+    sorted(listeNoeuds, key=lambda dist: dist.distances[str(noeudDistant.id)])
+    return listeNoeuds
+        '''>>> student_tuples = [
+        ('john', 'A', 15),
+        ('jane', 'B', 12),
+        ('dave', 'B', 10),
+]
+>>> sorted(student_tuples, key=lambda student: student[2])   # sort by age
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+    
 
