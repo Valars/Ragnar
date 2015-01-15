@@ -128,14 +128,8 @@ def peutCapturer(partie, noeud_attaquant, noeud_defenseur):
     
     
 def triNoeudsDistances(listeNoeuds, noeudDistant) :
-    sorted(listeNoeuds, key=lambda dist: dist.distances[str(noeudDistant.id)])
-    return listeNoeuds
-        '''>>> student_tuples = [
-        ('john', 'A', 15),
-        ('jane', 'B', 12),
-        ('dave', 'B', 10),
-]
->>> sorted(student_tuples, key=lambda student: student[2])   # sort by age
-[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
-    
-
+    print("debut du tri")
+    maliste = list(listeNoeuds)
+    maliste = sorted(maliste, key=lambda dist: dist.distances[str(noeudDistant.id)][1])
+    print("fin du tri")
+    return maliste
