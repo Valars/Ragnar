@@ -111,6 +111,8 @@ def play_pooo():
         #---------------------#
         #-------Code IA-------#
         #---------------------#
+        
+        #IAFournisseurs(partie,mesNoeuds, cellsDanger)
     '''Données utilisables :
             # partie
                 partie.plateau

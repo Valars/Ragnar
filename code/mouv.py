@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from poooc import order, state, state_on_update, etime
 from getObjects import *
 from mouvement import *

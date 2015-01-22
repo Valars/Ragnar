@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 '''Nom : Noeud
 
 Attributs : id                : Int                   : identifiant (unique pour la partie) le noeud

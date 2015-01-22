@@ -7,7 +7,7 @@ Attributs : matchid : Chaine de caractères : Identifiant de la partie
             plateau : Liste                : Contient la liste des objets Noeud ainsi que la liste des objets Arete de
                                               tout le plateau
                                               pour être précis : le plateau se décompose en deux : plateau["noeuds"] et plateau["lignes"]
-                                              dans plateau["noeuds"] on a un dictionnaire contenant les noeuds, chaque noeud ayant comme clé son id
+                                              dans plateau["noeuds"] on a un  dictionnaire contenant les noeuds, chaque noeud ayant comme clé son id
                                                 ex. : plateau["noeuds"]["1"] désigne le noeud d'id 1
                                               idem pour les lignes
                                                 ex. : plateau["lignes"]["1;2"] désigne l'arete ayant pour noeud1 le noeud d'id 1 et pour noeud2 le noeud d'id 2
