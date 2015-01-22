@@ -80,13 +80,7 @@ def play_pooo():
             print("#############ENDOFGAME########")
             master.destroy()
             return 0
-        gameover = retourServeur.split("GAMEOVER")
-        if gameover[0] == '' :
-            print("#############GAMEOVER##########")
-            print("#############GAMEOVER##########")
-            print("#############GAMEOVER##########")
-            master.destroy()
-            return 0
+
         unSeulState = retourServeur.split('STATE')
         unSeulState = 'STATE'+unSeulState[1]
 
