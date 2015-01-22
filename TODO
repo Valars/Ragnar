@@ -2,8 +2,8 @@ Ce qu'il faut faire
 
 TODO :
 
-    Regarder s'il n'y a pas de problème lors d'envois d'unités vers des noeuds "pleins"
-    Refaire la maj des listes en danger/ va se faire capturer
+    - Regarder s'il n'y a pas de problème lors d'envois d'unités vers des noeuds "pleins"
+    - Refaire la maj des listes en danger/ va se faire capturer
         va se faire capturer :
             A =
             - ce qui nous arrive dans la gueule
@@ -15,13 +15,36 @@ TODO :
                 je suis en danger
                 
                 
-    commencer à coder les IA
+    - commencer à coder les IA
 
+    (Romain)
+    - Commenter chaque fichier correctement pour que les profs, si ils le veulent, puissent le comprendre aisement, par exemple pour le parser, pourquoi donner un 
+        exemple de ce que font les regex.
+        !!! Cela inclue les entêtes de fonctions (pour ceux des classes qui manque je m'en occuperais)
+        !!! Je commence la documentation dès demain, donc si jamais à partir de demain soir vous changer le moindre paramètre, attribut, 
+            ou retour d'une fonction ou d'une classe, il faut me prévenir, ce serait con que des infos érronnées se retrouve dans le rapport et je ne vais pas aller
+            vérifier tout le code que rien a bougé vendredi soir Merci :) 
+            
     
     
+FAIT : 
+    -Les fonctions permettant de savoir si un noeud est capturable sont faites. Pour utiliser : 
+        -peutCapturer(partie : Partie, noeud1 : Noeud, noeud2 : Noeud)
+            Renvoie une liste de deux éléments : [Boolean, Int]
+                Le boolean vaut True si noeud1 est capable de capturer noeud2
+                Le Int correspond au nombre minimal d'unités à envoyer juste après l'execution de la fonction par noeud1 pour capturer noeud2
+                
+        Ne pas hésiter à m'envoyer un message si vous trouvez un bug/une valeur de retour incohérente ou si vous avez besoin d'eplications sur le fonctionnement
+        des fonctions et notament de la simulation dans la fonction simulation noeud
 
-
-
+    -La fonction de tri d'une liste de noeud selon leur rentabilité par rapport à un un autre est faite : triLePlusRentable dans fonctions_utiles
+        elle (comme dans ia rusher) fait des comparaisons de distance et de production : chaque noeud est comparé à tous les autres noeuds
+            et celui qui est le plus rentable à chaque comparaison se voit incrémenté une variable que l'on peut comparer à un genre de score
+            qui sert ensuite à trier la liste du plus rentable au moins rentable. 
+            Exemple: on a un noeud A pour lequel on veut déterminer "l'ordre de rentabilité" d'une liste de 5 d'autre noeud (ça peur etre dans ia rusher avec un rusher et les neutre à proximité ou dans ia fournisseur avec le fournisseur et les noeud en danger du plateau)
+                    on execute fonction
+                    on admet que (par exemple) le noeud 3 est plus rentable que tous les autres noeud , donc noeud3 à un "score" de 4
+                    si noeud5 est le troisieme le plus rentable, son score est donc 2 etc....
 
 ###### rien à voir #######
 CADENCES DE PRODUCTION : #

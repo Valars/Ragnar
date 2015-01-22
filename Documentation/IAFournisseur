@@ -6,7 +6,7 @@ et les plus courts chemins !
 #####################################################################################################################################
 #####################################################################################################################################
 
-Pour chaque noeud in noeudsEnDanger :
+Pour chaque noeud in fournisseur:
     noeudsTriés = list(noeudsEnDanger) #copie de la liste des dangers
     trier la liste noeudsTriés selon le plus "rentable" qu'il faudrait sauver #voir iarusher, faire quasi pareil
     envoyer vers le premier noeud de cette liste (voir le prochain noeud dans ses distances)
