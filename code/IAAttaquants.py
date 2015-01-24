@@ -15,11 +15,6 @@ def IAAttaquants(partie, mesNoeuds, cellsCapturees) :
 			cellulesASauver = sorted(cellulesASauver, key=lambda dist: dist[0].distances[str(attaquant.id)][1])
 			for cell in cellulesASauver :
 				if attaquant != cell[0] :
-					print("####################")
-					print("attaquant : "+str(attaquant.id)+" | cible : "+str(cell[0].id))
-					print(attaquant.distances[str(cell[0].id)][0][0])
-					print("####################")
-					#time.sleep(10000)
 					mouv(partie, attaquant, getNoeud(partie,attaquant.distances[str(cell[0].id)][0]),50)
 					break
 		for voisin in voisins :
