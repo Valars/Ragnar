@@ -239,10 +239,8 @@ def peutCapturer(partie, noeud_attaquant, noeud_defenseur):
     S : maListe      : Liste : Liste des noeuds triés du plus proche au plus éloigné
 '''    
 def triNoeudsDistances(listeNoeuds, noeudDistant) :
-    print("debut du tri")
     maliste = list(listeNoeuds)
     maliste = sorted(maliste, key=lambda dist: dist.distances[str(noeudDistant.id)][1])
-    print("fin du tri")
     return maliste
    
 '''Nom : triLePlusRentable(listeNoeud, noeudDistant)
