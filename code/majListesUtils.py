@@ -66,6 +66,8 @@ def calculDangersCapturees(partie, nosNoeuds) :
         if forces >= (noeud.off + noeud.defenses) : #si les forces qui nous arrivent dans le museau son supérieures à ce qu'on peut encaisser
             #alors on va se faire capturer
             cellulesCapturees.append([noeud, forces-noeud.off-noeud.defenses])#on enregistre le noeud dans les cellules qui vont se faire capturer + la différence de forces
+        
+
         else :#dessous ce else, la cellule ne va pas se faire capturer, il faut cependant vérifier si elle est en danger
             if noeud.role == "attaquant" or noeud.role == "rusher" : #seuls les attaquants et les rushers peuvent se faire capturer
                 total = 0#total des forces ennemies à proximité

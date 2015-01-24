@@ -44,4 +44,4 @@ def getVoisins(noeud) :
     S :          Int   : La distance du chemin
 '''
 def getDistance(noeud1, noeud2) :
-    return noeud1.distances[str(noeud2.id)]
+    return noeud1.distances[str(noeud2.id)][1]

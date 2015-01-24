@@ -266,38 +266,38 @@ def triLePlusRentable(listeNoeud, noeudDistant ):
     for noeud1 in listeNoeud:
         noeud1Score = 0
         
-        for noeud2[0] in listeNoeud:
+        for noeud2 in listeNoeud:
             
-            if (noeud1[0] != noeud2[0]):
+            if (noeud1 != noeud2):
             
-                if (getDistance(rusher, noeud1[0]) > getDistance(rusher,noeud2[0])):
-                    noeudLoin = noeud1[0]
-                    noeudProche = noeud2[0]
+                if (getDistance(noeudDistant, noeud1) > getDistance(noeudDistant,noeud2)):
+                    noeudLoin = noeud1
+                    noeudProche = noeud2
                     
                 else:
-                    noeudLoin = noeud2[0]
-                    noeudProche = noeud1[0]
+                    noeudLoin = noeud2
+                    noeudProche = noeud1
                     
-                marge = max([noeud1[0].prod, noeud2[0].prod]) - min([noeud1[0].prod, noeud2[0].prod])
+                marge = max([noeud1.prod, noeud2.prod]) - min([noeud1.prod, noeud2.prod])
+
                 diffDistance = getDistance(noeudDistant, noeudLoin) - getDistance(noeudDistant, noeudProche)
                     
                 if(diffDistance == 0):
-                    if(noeud1[0].prod > noeud2[0].prod): noeud1Score += 1
+                    if(noeud1.prod > noeud2.prod): noeud1Score += 1
                     
                 elif (diffDistance <= (getDistance(noeudDistant, noeudProche) * marge)):
-                    if(noeudLoin == noeud1[0]) : noeud1Score += 1
+                    if(noeudLoin == noeud1) : noeud1Score += 1
                     
                 else: 
-                    if(noeudProche == noeud1[0]) : noeud1Score += 1
+                    if(noeudProche == noeud1) : noeud1Score += 1
                     
-        listeTrie.append([noeud1[0], noeud1[1], noeud1Score])
+        listeTrie.append([noeud1, noeud1Score])
                     
     
-    listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[2])
-    
+    listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[1])
+
     for liste in listeTrie:
         liste.pop()
-        
     return listeTrie    
     
 

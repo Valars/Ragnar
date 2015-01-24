@@ -17,30 +17,30 @@ from mouv import *
 from plusCourtChemin import *
 from tkinter import *
 from majListesUtils import *
+from IAAttaquants import *
+from IARushers import *
 
 def register_pooo(uid):
     global partie
     partie = Partie("",uid)
 
 def init_pooo(init_string):
-    print("###########################################")
-    print(init_string)
-    print("###########################################")
     global partie
     uid = partie.uid
     partie = parseInit(init_string)
     partie.uid = uid
     calc_distances(partie)
+    for cle in partie.plateau["noeuds"] :
+        partie.plateau["noeuds"][cle].x = partie.plateau["noeuds"][cle].x//10
+        partie.plateau["noeuds"][cle].y = partie.plateau["noeuds"][cle].y//10
+        partie.plateau["noeuds"][cle].radius = partie.plateau["noeuds"][cle].radius//2.5
 
 def affichageGraphique(canva) :
     global partie
     coords = [[0,100],[0,400],[400,100],[400,400],[200,0],[200,500],[100,450]]
     for cle in partie.plateau["noeuds"] :
-        partie.plateau["noeuds"][cle].x = coords[partie.plateau["noeuds"][cle].id][0]
-        partie.plateau["noeuds"][cle].y = coords[partie.plateau["noeuds"][cle].id][1]
-        partie.plateau["noeuds"][cle].radius = 50
         partie.plateau["noeuds"][cle].afficher(canva)
-
+    
     aretesAffichees = []
     offsety = 20
     for cle in partie.plateau["lignes"] :
@@ -55,7 +55,7 @@ def play_pooo():
     global partie
 
     master = Tk()
-    w = Canvas(master, width=800, height=800)
+    w = Canvas(master, width=1400, height=800)
 
     """Active le robot-joueur
 
@@ -75,9 +75,6 @@ def play_pooo():
 
         endofgame = retourServeur.split("ENDOFGAME")
         if endofgame[0] == '' :
-            print("#############ENDOFGAME########")
-            print("#############ENDOFGAME########")
-            print("#############ENDOFGAME########")
             master.destroy()
             return 0
 
@@ -91,17 +88,12 @@ def play_pooo():
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-
+        
         ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
-            for ligne in noeud.aretesConnectees :
-                if ligne.noeud1 == noeud :
-                    voisin = ligne.noeud2
-                else :
-                    voisin = ligne.noeud1
-                if voisin not in (mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"]) and noeud.off > 0:
-                    mouv(partie,noeud,voisin,100//len(noeud.aretesConnectees))
-
+            IARushers(partie, noeud)
+        
+        IAAttaquants(partie, mesNoeuds, cellsCapturees)
         #---------------------#
         #-------Code IA-------#
         #---------------------#
