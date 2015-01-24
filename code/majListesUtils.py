@@ -1,3 +1,4 @@
+from getObjects import *
 ''' Nom : majRoles(partie):
         
     E : laPartie   : Partie : Informations de bases sur la partie en cours
@@ -10,27 +11,27 @@ def majRoles(partie) :
     rushers = []
     fournisseurs = []
     attaquants = []
-    for cle in noeuds :
-        if noeuds[cle].proprio == partie.me :
-            role = ""
-            #si le noeud est à nous
-            #test si le noeud est un rusher
-            #est-ce qu'il existe une cellule neutre à portée
-            for ligne in noeuds[cle].aretesConnectees :
-                if ligne.noeud1.proprio == -1 or ligne.noeud2.proprio == -1 :#-1 = neutre
-                    role = 'rusher'
-                    rushers.append(noeuds[cle])
-                    break#pas la peine d'aller plus loin, on a trouvé un neutre à proximité, notre cellule est un rusher
-                elif ligne.noeud1.proprio != partie.me or ligne.noeud2.proprio != partie.me : #si on a un ennemi à proximité
-                    role = "attaquant"
-                    attaquants.append(noeuds[cle])
-                    break#on arrete les frais, si on est pas un rusher, on a pas de neutre à proximité, donc dés qu'on a un ennemi, c'est qu'on est attaquant
-                else : #on n'a pas de neutres ni d'attaquants à proximité, on est fournisseur
-                    role = "fournisseur"
-            if role == "fournisseur" :
-                fournisseurs.append(noeuds[cle])
-
-            noeuds[cle].role = role
+    neutreTrouve = False
+    ennemiTrouve = False
+    for noeud in noeuds :
+        if noeuds[noeud].proprio == partie.me :
+            voisins = getVoisins(noeuds[noeud])
+            for voisin in voisins :
+                if voisin.proprio == -1 :
+                    neutreTrouve = True
+                else :
+                    if voisin.proprio != noeuds[noeud].proprio :
+                        ennemiTrouve = True
+            if neutreTrouve :
+                noeuds[noeud].role = "rusher"
+                rushers.append(noeuds[noeud])
+            else :
+                if ennemiTrouve :
+                    noeuds[noeud].role = "attaquant"
+                    attaquants.append(noeuds[noeud])
+                else :
+                    noeuds[noeud].role = "fournisseur"
+                    fournisseurs.append(noeuds[noeud])
     return {"rushers":rushers,"fournisseurs":fournisseurs,"attaquants":attaquants}
 
 

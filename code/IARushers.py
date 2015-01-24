@@ -11,4 +11,7 @@ def IARushers(partie,rusher):
             neutres.append(voisin)
 
     neutres = triLePlusRentable(neutres, rusher)
-    mouv(partie, rusher, neutres[0][0],100)
+    try :
+        mouv(partie, rusher, neutres[0][0],100)
+    except Exception :
+        pass

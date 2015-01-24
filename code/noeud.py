@@ -73,6 +73,7 @@ class Noeud :
         canva.create_text(centrex,centrey,text='atk : ' + str(self.off)+"/"+str(self.offsize), font=('Helvetica', fontSize))
         canva.create_text(centrex,centrey+20,text='def : '+str(self.defenses)+"/"+str(self.defsize), font=('Helvetica', fontSize))
         canva.create_text(centrex,centrey+35, text=self.prod, font=('Helvetica', fontSize))
+        canva.create_text(centrex,centrey+45, text=self.role, font=('Helvetica', fontSize))
 
         canva.pack()
 

@@ -31,9 +31,9 @@ def init_pooo(init_string):
     partie.uid = uid
     calc_distances(partie)
     for cle in partie.plateau["noeuds"] :
-        partie.plateau["noeuds"][cle].x = partie.plateau["noeuds"][cle].x//10
-        partie.plateau["noeuds"][cle].y = partie.plateau["noeuds"][cle].y//10
-        partie.plateau["noeuds"][cle].radius = partie.plateau["noeuds"][cle].radius//2.5
+        partie.plateau["noeuds"][cle].x = partie.plateau["noeuds"][cle].x//20
+        partie.plateau["noeuds"][cle].y = partie.plateau["noeuds"][cle].y//20
+        partie.plateau["noeuds"][cle].radius = partie.plateau["noeuds"][cle].radius//3.5
 
 def affichageGraphique(canva) :
     global partie
@@ -66,10 +66,6 @@ def play_pooo():
 
     while True :
 
-        w.delete(ALL)
-        affichageGraphique(w)
-        w.update_idletasks()
-
         #obligé de faire ce petit trick, le serveur envoi parfois deux states collés ...
         retourServeur = state_on_update()
 
@@ -88,11 +84,13 @@ def play_pooo():
         cellulesEnDangerOuCapturees = calculDangersCapturees(partie, mesNoeuds["rushers"]+mesNoeuds["fournisseurs"]+mesNoeuds["attaquants"])
         cellsDanger = cellulesEnDangerOuCapturees["dangers"]
         cellsCapturees = cellulesEnDangerOuCapturees["capturees"]
-        
+        w.delete(ALL)
+        affichageGraphique(w)
+        w.update_idletasks()
         ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
             IARushers(partie, noeud)
-        
+
         IAAttaquants(partie, mesNoeuds, cellsCapturees)
         #---------------------#
         #-------Code IA-------#

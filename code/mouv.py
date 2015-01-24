@@ -18,7 +18,6 @@ from arete import *
 '''
 
 def mouv(partie, expediteur, cible, units):
-
     order("["+str(partie.uid)+"]MOV"+str(units)+"FROM"+str(expediteur.id)+"TO"+str(cible.id))
     arete = getArete(partie, expediteur.id, cible.id)
     arete.mouvements.append(Mouvement(cible, expediteur.off*units//100, etime(), expediteur.proprio))
