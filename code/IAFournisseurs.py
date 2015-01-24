@@ -17,7 +17,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
     #print("Je suis le fournisseur", fournisseur.id)
     #print("mes voisins : voisins")
     if fournisseur.aretesConnectees == 1 : # Si le fournisseur n'a qu'un seul voisin, il lui envoit toutes ses unités
-        print("J'envoie toutes mes unités vers",voisins[0].id)
+        #print("J'envoie toutes mes unités vers",voisins[0].id)
         mouv(partie, fournisseur, voisins[0], 100)
         return
     else : 
