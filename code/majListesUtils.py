@@ -27,7 +27,8 @@ def majRoles(partie) :
                     break#on arrete les frais, si on est pas un rusher, on a pas de neutre à proximité, donc dés qu'on a un ennemi, c'est qu'on est attaquant
                 else : #on n'a pas de neutres ni d'attaquants à proximité, on est fournisseur
                     role = "fournisseur"
-                    fournisseurs.append(noeuds[cle])
+            if role == "fournisseur" :
+                fournisseurs.append(noeuds[cle])
 
             noeuds[cle].role = role
     return {"rushers":rushers,"fournisseurs":fournisseurs,"attaquants":attaquants}
