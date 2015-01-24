@@ -34,12 +34,14 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
         else :
             debutDePartie = False
         
-        if len(noeudsEnDanger) == 0 : # Si il n'y a pas de noeuds en danger
+        # Si il n'y a pas de noeuds en danger
+        if len(noeudsEnDanger) == 0 : 
             
-            #Si on est en début de partie, on répartie nos unités entre les attaquants (75%) et les rushers (25%)
-            if debutDePartie and len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 :# Si il y a des voisins rushers et des attaquants
+            # Si on est en début de partie, et qu'il existe des voisins rushers et des attaquants sur le plateau
+            if debutDePartie and len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 :
                 mouv(partie, fournisseur, voisinsRushers[0], 25)
                 mouv(partie, fournisseur, noeudsAttaquants[0], 75)
+            # Si on n'est pas en début de partie
             elif not debutDePartie and len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 :
                 mouv(partie, fournisseur, voisinsRushers[0], 50)
                 mouv(partie, fournisseur, noeudsAttaquants[0], 50)
@@ -73,6 +75,6 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
                     mouv(partie, fournisseur, noeudIntermediaire, 50) # Envoie 50% de ses unités vers le noeud en danger le plus rentable
                 else :
                     # Sinon, envoie 100% de ses unités vers le noeud en danger le plus rentable
-                    print(noeudsEnDanger)
-                    print(noeudsEnDanger[0])
+                    #print(noeudsEnDanger)
+                    #print(noeudsEnDanger[0])
                     mouv(partie, fournisseur, noeudsEnDanger[0][0], 100)
