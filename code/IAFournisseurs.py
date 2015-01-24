@@ -3,63 +3,78 @@
 from fonctions_utiles import *
 from mouv import *
 from math import *
+import time
 
-def IAFournisseurs(partie, dictRolesNoeuds, cellsDanger) :
+
+def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
+    """ IA des noeuds Fournisseurs :
+        Input:  partie : objet partie
+                idFournisseur : int
+                noeudsEnDanger : liste de [noeud, nbUnitésAenvoyer] """
+    voisins = getVoisins(fournisseur)
+    auFront, voisinsAuFront  = False, []
     
-    #cellsDanger : [[noeud, nbUnits pour sauver], [noeud, nbUnits pour sauver],...]
-    #fournisseur : [Noeud, Noeud, Noeud,...]
-    
-    #On cree une liste des noeuds en danger sans le nombre d'unites necessaires pour le sortir du danger : necessaire pour utiliser 
-    #la fonction triLePlusRentable qui est commune a ia rusher et ia fournisseur
-    
-    if(len(listeDesDangers) != 0):
-        for fournisseur in dictRolesNoeuds["fournisseurs"]:
-            
-            dangersTries = triLePlusRentable(listeDesDangers, fournisseur)  #On trie les dangers selon leur rentabilite
+    print("Je suis le fournisseur", fournisseur.id)
+    print("mes voisins : voisins")
+    if fournisseur.aretesConnectees == 1 : # Si le fournisseur n'a qu'un seul voisin, il lui envoit toutes ses unités
+        print("J'envoie toutes mes unités vers",voisins[0].id)
+        mouv(partie, fournisseur, voisins[0], 100)
+        time.sleep(15) 
+        return
+    else : 
+        # Liste des noeuds neutres sur le plateau (id)
+        neutresEnJeu = [noeud for noeud in partie.plateau["noeuds"] if getNoeud(partie, noeud).proprio == -1] 
+        # Liste des voisins du fournisseur qui sont "rusher"
+        voisinsRushers = [noeud for noeud in getVoisins(fournisseur) if noeud.role == "rusher"]
+        # Liste des nos noeuds attaquants
+        noeudsAttaquants = [ getNoeud(partie,noeud) for noeud in partie.plateau["noeuds"] if getNoeud(partie, noeud).role == "attaquant"]
         
-            aideEnvoyee = False
-            i  = 0
-            
-            while(aideEnvoyee == False and i < len(dangersTries)):                                
-                besoin = dangersTries[i][2]    #On recupere le besoin en unites du noeud
-                
-                if(besoin <= fournisseur.off):                              #si le fournisseur a assez d'unites
-                    a_envoyer = ceil((besoin/fournisseur.atk)*100)          #On calcul le pourcentage d'unites a envoyer
-                    prochainNoeud = fournisseur.distances[str(dangersTries[i][0].id)][0] #on recupere le prochain noeud pour envoyer les renforts
-                    
-                    mouv(partie, fournisseur, prochainNoeud, a_envoyer)       #et on envoi (mouv actualise fournisseur.off et ajoute le mouvement correspond sur l'arete)
-                    aideEnvoyee = True
-                    
-                    if(prochainNoeud == dangersTries[i]):       #Si le noeud en danger est voisin du fournisseur, alors il va automatiquement est sortie du danger dans peut de temps donc on le supprime de la liste
-                        dangersTries.pop[i]
-    
-    nbNeutres = 0
-    
-    for noeud in partie.plateau["noeuds"] :         #On determine le nombre de neutres sur le plateau
-        if (noeud.proprio == -1) : nbNeutres += 1
-    
-    if (nbNeutres >= len(partie.plateau["noeuds"])//2 - 1) : debutDePartie = True    #On regarde si on est en debut de partie (la moitie ou plus des noeuds sont des neutres)
-    else : debutDePartie = False
+        # Si la moitié du plateau est neutre, on considère que nous sommes en début de partie
+        if len(neutresEnJeu) >= (len(partie.plateau["noeuds"])//2) :
+            debutDePartie = True
+        else :
+            debutDePartie = False
         
-    
-    
-    for fournisseur in dictRolesNoeuds["fournisseurs"]:  
-        if (fournisseur.off > 0):
+        if len(noeudsEnDanger) == 0 : # Si il n'y a pas de noeuds en danger
             
-            if(debutDePartie): #Debut de partie donc on mise tout sur les rushers
-                
-                triRusherDist = triNoeudsDistances(dictRolesNoeuds["rushers"], fournisseur)
-                
-                prochainNoeud = fournisseur.distances[str(triRusherDist[1].id)][0][1]
-                a_envoyer = 100
-                
-                mouv(partie, fournisseur, prochainNoeud, a_envoyer)
-            else: #Pas debut de partie donc on soutient les attaquants
+            #Si on est en début de partie, on répartie nos unités entre les attaquants (75%) et les rushers (25%)
+            if debutDePartie : 
+                if len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 : # Si il y a des voisins rushers et des attaquants
+                    mouv(partie, fournisseur, voisinsRushers[0], 25)
+                    mouv(partie, fournisseur, noeudsAttaquants[0], 75)
+                elif len(voisinsRushers) == 0 and len(noeudsAttaquants) > 0 : # Si il n'y a pas de voisins rushers
+                    mouv(partie, fournisseur, noeudsAttaquants[0], 100)
+                elif len(voisinsRushers) > 0 and len(noeudsAttaquants) == 0 : # Si il n'y a pas d'attaquants
+                    mouv(partie, fournisseur, voisinsRushers[0], 100)
+                    
+            #Sinon, on répartie nos unités entre les attaquants (50%) et les rushers (50%)
+            else :
+                mouv(partie, fournisseur, voisinsRushers[0], 50)
+                mouv(partie, fournisseur, noeudsAttanquants[0], 50)
+        
+        # Sinon si il y'a des noeuds en danger 
+        else :
             
-                triAttaquantDist = triNoeudsDistances(dictRolesNoeuds["attaquant"], fournisseur)
-                
-                prochainNoeud = fournisseur.distances[str(triAttaquantDist[1].id)][0][1]
-                a_envoyer = 100
-                
-                mouv(partie, fournisseur, prochainNoeud, a_envoyer)
-    
+            # Si mon voisin est un noeud en danger, je considère que je suis proche du front.
+            for noeud in noeudsEnDanger :
+                if noeud[0] in voisins :
+                    auFront = True
+                    voisinsAuFront.append(noeud)
+            
+            # Si je suis au front, j'envoie l'ensemble de mes unités vers mon voisin le plus rentable
+            if auFront :
+                voisinsAuFront = triLePlusRentable(voisinsAuFront,fournisseur)
+                mouv(partie, fournisseur, voisinsAuFront[0][0], 100)
+
+            else :
+                noeudsEnDanger = triLePlusRentable(noeudsEnDanger,fournisseur)
+            
+                #Si on est en début de partie et qu'un voisin du fournisseur est un rusher :
+                if debutDePartie and len(voisinsRushers) > 0 : 
+                    mouv(partie, fournisseur, voisinsRushers[0], 50) # Envoie 50% de ses unités vers son voisin rusher
+                    noeudIntermediaire = fournisseur.distances[str(noeudsEnDanger[0][0].id)]
+                    mouv(partie, fournisseur, noeudIntermediaire, 50) # Envoie 50% de ses unités vers le noeud en danger le plus rentable
+                else :
+                    # Sinon, envoie 100% de ses unités vers le noeud en danger le plus rentable
+                    mouv(partie, fournisseur, noeudsEnDanger[0][0], 100)
+      
