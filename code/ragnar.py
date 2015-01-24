@@ -19,6 +19,7 @@ from tkinter import *
 from majListesUtils import *
 from IAAttaquants import *
 from IARushers import *
+import time
 
 def register_pooo(uid):
     global partie
@@ -30,6 +31,7 @@ def init_pooo(init_string):
     partie = parseInit(init_string)
     partie.uid = uid
     calc_distances(partie)
+
     for cle in partie.plateau["noeuds"] :
         partie.plateau["noeuds"][cle].x = partie.plateau["noeuds"][cle].x//20
         partie.plateau["noeuds"][cle].y = partie.plateau["noeuds"][cle].y//20
@@ -72,6 +74,7 @@ def play_pooo():
         endofgame = retourServeur.split("ENDOFGAME")
         if endofgame[0] == '' :
             master.destroy()
+            break
             return 0
 
         unSeulState = retourServeur.split('STATE')
