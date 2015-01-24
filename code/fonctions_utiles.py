@@ -104,7 +104,7 @@ def simulation_noeud(noeud, mouvement_theorique = None):
         if ( noeud_cible["proprio"] != -1) :            #Si le noeud n'est pas neutre on calcul la production de l'attaque et de la défense du noeud
 
             prod_atk = (couple[0] - time_precedent) * noeud_cible["prod"] + report_prod_atk
-            report_prod_atk = +prod_atk % 1   #Stockage de la partie décimale
+            report_prod_atk = prod_atk % 1   #Stockage de la partie décimale
             
             noeud_cible["atk"] += int(prod_atk)
             noeud_cible["atk"] = min([noeud_cible["atk"] , noeud_cible["maxAtk"]]) #Verification que l'ajout de la production ne fasse pas dépasser la limite d'atk du noeud
@@ -253,7 +253,8 @@ def triNoeudsDistances(listeNoeuds, noeudDistant) :
                     rapport à ce fournisseur. La liste renvoyée est une liste de listes contenant deux éléments, le premier le Noeud en 
                     danger et le second sa rentabilité, plus la valeur de la rentabilité est elevée, plus le noeud est important.
     
-    E : listeNoeud   : Liste : Liste des noeud à classer selon leur rentabilité
+    E : listeNoeud   : Liste : Liste des noeud à classer selon leur rentabilité et contenant le nombre d'unités nécessaires pour les aider
+                                [[noeud, besoin], [noeud, besoin]...
         noeudDistant : Noeud : Noeud qui sert de point de réference pour le calcul de la rentabilité des autres noeuds
     
     S : listeTrie    : Liste : [[rentabilite, noeud],[rentabilite, noeud],[rentabilite, noeud]...] du noeud le plus rentable au moins rentable
@@ -265,58 +266,41 @@ def triLePlusRentable(listeNoeud, noeudDistant ):
     for noeud1 in listeNoeud:
         noeud1Score = 0
         
-        for noeud2 in listeNoeud:
+        for noeud2[0] in listeNoeud:
             
-            if (noeud1 != noeud2):
-                
-                marge = max([noeud1.prod, noeud2.prod]) - min([noeud1.prod, noeud2.prod])
-                diffDistance = getDistance(noeudDistant, noeud1) - getDistance(noeudDistant, noeud2)
+            if (noeud1[0] != noeud2[0]):
             
-                if (diffDistance > 0):
-                    noeudLoin = noeud1
-                    noeudProche = noeud2
+                if (getDistance(rusher, noeud1[0]) > getDistance(rusher,noeud2[0])):
+                    noeudLoin = noeud1[0]
+                    noeudProche = noeud2[0]
                     
                 else:
-                    noeudLoin = noeud2
-                    noeudProche = noeud1
+                    noeudLoin = noeud2[0]
+                    noeudProche = noeud1[0]
+                    
+                marge = max([noeud1[0].prod, noeud2[0].prod]) - min([noeud1[0].prod, noeud2[0].prod])
+                diffDistance = getDistance(noeudDistant, noeudLoin) - getDistance(noeudDistant, noeudProche)
                     
                 if(diffDistance == 0):
-                    if(noeud1.prod > noeud2.prod): noeud1Score += 1
+                    if(noeud1[0].prod > noeud2[0].prod): noeud1Score += 1
                     
                 elif (diffDistance <= (getDistance(noeudDistant, noeudProche) * marge)):
-                    if(noeudLoin == noeud1) : noeud1Score += 1
+                    if(noeudLoin == noeud1[0]) : noeud1Score += 1
                     
                 else: 
-                    if(noeudProche == noeud1) : noeud1Score += 1
+                    if(noeudProche == noeud1[0]) : noeud1Score += 1
                     
-        listeTrie.append([noeud1, noeud1Score])
+        listeTrie.append([noeud1[0], noeud1[1], noeud1Score])
                     
     
-    listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[1])
+    listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[2])
+    
+    for liste in listeTrie:
+        liste.pop()
         
     return listeTrie    
     
-'''Nom : besoinUnitesDanger(cellsDanger, noeud):
 
-    Description : Cette fonction recherche le noeud dans la liste rentrée (cellsDanger, cf. ragnar.py) et renvoie le nb correspondant
-    d'unité nécessaires pour la sauver
-    
-    E : cellsDanger    : Liste : Liste des noeuds en danger
-        cellsDanger    : Noeud : Noeud pour lequel on veut connaitre le nombre d'unités nécessaires pour le sortir du danger
-    
-    S : nbUnitesRequis : Int   : Vaut 0 si jamais le noeud rentré n'était pas dans cellsDanger
-'''
-def besoinUnitesDanger(cellsDanger, noeud):
-    
-    trouve = False
-    i = 0
-    nbUnitesRequis = 0
-    while (trouve == False and i != len(cellsDanger)):
-        if(cellsDanger[i][0].id == noeud.id):
-            trouve = True
-            nbUnitesRequis = cellsDanger[i][1]
-    
-    return nbUnitesRequis
     
     
 
