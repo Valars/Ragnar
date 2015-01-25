@@ -72,7 +72,9 @@ def play_pooo():
         retourServeur = state_on_update()
 
         endofgame = retourServeur.split("ENDOFGAME")
-        if endofgame[0] == '' :
+        gameover = retourServeur.split("GAMEOVER")
+        endofcontest = retourServeur.split("ENDOFCONTEST")
+        if endofgame[0] == '' or gameover[0] == '' or endofcontest[0] == '':
             master.destroy()
             break
             return 0
@@ -93,7 +95,8 @@ def play_pooo():
         ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
             IARushers(partie, noeud)
-
+        '''for noeud in mesNoeuds["fournisseurs"] :
+            IAFournisseurs(partie, noeud, cellsDanger)'''
         IAAttaquants(partie, mesNoeuds, cellsCapturees)
         #---------------------#
         #-------Code IA-------#

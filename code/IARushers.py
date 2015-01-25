@@ -10,8 +10,7 @@ def IARushers(partie,rusher):
         if voisin.proprio == -1 :
             neutres.append(voisin)
 
-    neutres = triLePlusRentable(neutres, rusher)
-    try :
+
+    if len(neutres) > 0 :
+        neutres = triLePlusRentable(neutres, rusher)
         mouv(partie, rusher, neutres[0][0],100)
-    except Exception :
-        pass
