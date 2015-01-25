@@ -11,9 +11,10 @@ def majRoles(partie) :
     rushers = []
     fournisseurs = []
     attaquants = []
-    neutreTrouve = False
-    ennemiTrouve = False
+    
     for noeud in noeuds :
+        neutreTrouve = False
+        ennemiTrouve = False
         if noeuds[noeud].proprio == partie.me :
             voisins = getVoisins(noeuds[noeud])
             for voisin in voisins :

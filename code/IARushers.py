@@ -13,4 +13,4 @@ def IARushers(partie,rusher):
 
     if len(neutres) > 0 :
         neutres = triLePlusRentable(neutres, rusher)
-        mouv(partie, rusher, neutres[0][0],100)
+        mouv(partie, rusher, neutres[0][0],99)
