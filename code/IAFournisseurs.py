@@ -17,7 +17,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
     auFront, voisinsAuFront  = False, []
     
     if fournisseur.aretesConnectees == 1 : # Si le fournisseur n'a qu'un seul voisin, il lui envoit toutes ses unités
-        mouv(partie, fournisseur, voisins[0], 100)
+        mouv(partie, fournisseur, voisins[0], 99)
         return
     else : 
         # Liste des noeuds neutres sur le plateau (id)
@@ -39,28 +39,28 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
             # Si on est en début de partie, et qu'il existe des voisins rushers et des attaquants sur le plateau
             if debutDePartie and len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 :
                 
-                mouv(partie, fournisseur, voisinsRushers[0], 25)
+                mouv(partie, fournisseur, voisinsRushers[0], 50)
                 noeudIntermediaire = fournisseur.distances[str(noeudsAttaquants[0].id)][0]
                 noeudIntermediaire = getNoeud(partie, noeudIntermediaire)
-                mouv(partie, fournisseur, noeudIntermediaire, 75)
+                mouv(partie, fournisseur, noeudIntermediaire, 99)
             
             # Si on n'est pas en début de partie
             elif not debutDePartie and len(voisinsRushers) > 0 and len(noeudsAttaquants) > 0 :
 
-                mouv(partie, fournisseur, voisinsRushers[0], 50)
+                mouv(partie, fournisseur, voisinsRushers[0], 25)
                 noeudIntermediaire = fournisseur.distances[str(noeudsAttaquants[0].id)][0]
                 noeudIntermediaire = getNoeud(partie, noeudIntermediaire)
-                mouv(partie, fournisseur, noeudIntermediaire, 50)
+                mouv(partie, fournisseur, noeudIntermediaire, 99)
                 
             else :
                 if len(voisinsRushers) == 0 and len(noeudsAttaquants) > 0 : # Si il n'y a pas de voisins rushers
 
                     noeudIntermediaire = fournisseur.distances[str(noeudsAttaquants[0].id)][0]
                     noeudIntermediaire = getNoeud(partie, noeudIntermediaire)
-                    mouv(partie, fournisseur, noeudIntermediaire, 100)
+                    mouv(partie, fournisseur, noeudIntermediaire, 99)
                 elif len(voisinsRushers) > 0 and len(noeudsAttaquants) == 0 : # Si il n'y a pas d'attaquants
 
-                    mouv(partie, fournisseur, voisinsRushers[0], 100)
+                    mouv(partie, fournisseur, voisinsRushers[0], 99)
                     
         # Sinon si il y'a des noeuds en danger 
         else :
@@ -74,7 +74,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
             # Si je suis au front, j'envoie l'ensemble de mes unités vers mon voisin le plus rentable
             if auFront :
                 voisinsAuFront = triLePlusRentable(voisinsAuFront,fournisseur)
-                mouv(partie, fournisseur, voisinsAuFront[0], 100)
+                mouv(partie, fournisseur, voisinsAuFront[0], 99)
             else :
                 noeudsEnDanger = triLePlusRentable(noeudsEnDanger,fournisseur)
 
@@ -84,7 +84,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
                     mouv(partie, fournisseur, voisinsRushers[0], 50) # Envoie 50% de ses unités vers son voisin rusher
                     noeudIntermediaire = fournisseur.distances[str(noeudsEnDanger[0].id)][0]
                     noeudIntermediaire = getNoeud(partie, noeudIntermediaire)
-                    mouv(partie, fournisseur, noeudIntermediaire, 50) # Envoie 50% de ses unités vers le noeud en danger le plus rentable
+                    mouv(partie, fournisseur, noeudIntermediaire, 99) # Envoie 50% de ses unités vers le noeud en danger le plus rentable
                 
                 else :
                     # Sinon, envoie 100% de ses unités vers le noeud en danger le plus rentable
