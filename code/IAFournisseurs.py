@@ -16,7 +16,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
     voisins = getVoisins(fournisseur)
     auFront, voisinsAuFront  = False, []
     
-    if fournisseur.aretesConnectees == 1 : # Si le fournisseur n'a qu'un seul voisin, il lui envoit toutes ses unités
+    if len(fournisseur.aretesConnectees) == 1 : # Si le fournisseur n'a qu'un seul voisin, il lui envoit toutes ses unités
         mouv(partie, fournisseur, voisins[0], 99)
         return
     else : 
