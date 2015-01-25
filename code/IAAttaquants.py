@@ -20,3 +20,4 @@ def IAAttaquants(partie, mesNoeuds, cellsCapturees) :
 		for voisin in voisins :
 			if voisin.proprio != -1 and voisin.proprio != attaquant.proprio :
 				mouv(partie, attaquant, voisin,99)
+				break
