@@ -74,7 +74,7 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
             # Si je suis au front, j'envoie l'ensemble de mes unités vers mon voisin le plus rentable
             if auFront :
                 voisinsAuFront = triLePlusRentable(voisinsAuFront,fournisseur)
-                mouv(partie, fournisseur, voisinsAuFront[0][0], 100)
+                mouv(partie, fournisseur, voisinsAuFront[0], 100)
             else :
                 noeudsEnDanger = triLePlusRentable(noeudsEnDanger,fournisseur)
 
@@ -88,6 +88,6 @@ def IAFournisseurs(partie, fournisseur, noeudsEnDanger) :
                 
                 else :
                     # Sinon, envoie 100% de ses unités vers le noeud en danger le plus rentable
-                    noeudIntermediaire = fournisseur.distances[str(noeudsEnDanger[0][0].id)][0]
+                    noeudIntermediaire = fournisseur.distances[str(noeudsEnDanger[0].id)][0]
                     noeudIntermediaire = getNoeud(partie, noeudIntermediaire)
                     mouv(partie, fournisseur, noeudIntermediaire, 100)
