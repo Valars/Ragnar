@@ -18,3 +18,36 @@ c'est la somme de ces décisions qui forment l'intelligence artificielle.
 Nous avons développé Ragnar comme une IA en réseau, où les décisions sont prises au niveau de chacune
 des planètes du plateau de jeu. Nous avons avons ainsi cherché à ce que chaque planète ait une
 connaissance aigüe de son environnement afin de prendre une décision rapide et pertinente.
+
+
+================ CONCLUSION ======================
+
+Le développement de notre Intelligence Artificielle a été un défi passsionant et la source de
+nombreux enseignements. Nous avons tous pris conscience que l'ensemble du processus de reflexion
+et de structuration d'un projet est une part déterminante de son succès. Nous avons su prendre 
+le temps construire notre raisonnement mais aussi de déterminer l'ensemble de notre vocabulaire de travail. 
+En effet, il nous a été important de nous fixer un lexique commun afin de raisonner dans une même "langue".
+
+Nous souhaitons remercier l'ensemble de l'équipe POOO pour pour leur encadrement dans ce projet, et nous
+souhaitons bonne chance aux autres équipes : la confrontation sera rude \o/ .
+
+       ,   |\ ,__
+       |\   \/   `.   
+       \ `-.:.     `\     
+        `-.__ `\=====|    
+           /=`'/   ^_\    
+         .'   /\   .=)    
+      .-'  .'|  '-(/_|    
+    .'  __(  \  .'`       
+   /_.'`  `.  |`
+            \ |
+             |/
+             
+__________    _____    ________  _______      _____ __________ 
+\______   \  /  _  \  /  _____/  \      \    /  _  \\______   \
+ |       _/ /  /_\  \/   \  ___  /   |   \  /  /_\  \|       _/
+ |    |   \/    |    \    \_\  \/    |    \/    |    \    |   \
+ |____|_  /\____|__  /\______  /\____|__  /\____|__  /____|_  /
+        \/         \/        \/         \/         \/       \/
+
+
