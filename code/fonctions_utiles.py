@@ -294,9 +294,11 @@ def triLePlusRentable(listeNoeud, noeudDistant ):
     
     listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[1])
 
+    resultat = []
     for liste in listeTrie:
-        liste.pop()
-    return listeTrie    
+        resultat.append(liste[0])
+        
+    return resultat   
     
 
     
