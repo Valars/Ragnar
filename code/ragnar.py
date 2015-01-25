@@ -18,6 +18,7 @@ from plusCourtChemin import *
 from tkinter import *
 from majListesUtils import *
 from IAAttaquants import *
+from IAFournisseurs import *
 from IARushers import *
 import time
 
@@ -95,8 +96,8 @@ def play_pooo():
         ##########################################################################################################################################
         for noeud in mesNoeuds["rushers"] :
             IARushers(partie, noeud)
-        '''for noeud in mesNoeuds["fournisseurs"] :
-            IAFournisseurs(partie, noeud, cellsDanger)'''
+        for noeud in mesNoeuds["fournisseurs"] :
+            IAFournisseurs(partie, noeud, cellsDanger)
         IAAttaquants(partie, mesNoeuds, cellsCapturees)
         #---------------------#
         #-------Code IA-------#
