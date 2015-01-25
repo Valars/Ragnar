@@ -1,0 +1,20 @@
+================ INTRODUCTION ======================
+
+Dans le cadre de notre première année du cycle d'ingénierie informatique de Polytech Nantes,
+nous avons suivis une introduction à l'algorithmie et à la programmation. Cette introduction
+a eu pour but de nous faire découvrir les notions essentielles du développement informatique, 
+ainsi que les algorithmes et les structures de données élémentaires.
+
+Afin de pouvoir mettre en pratique l'ensemble de ces enseignements, nous avons eu la tâche de
+développer une intelligence artificielle pour le jeu "Little Stars for little wars". Notre groupe
+de travail est composé de Awa Camara, Romain Garnier, Virgile Jarry et Guillaume Paulet.
+
+Il existe deux grands types d'intelligences articielles. Une IA omnisciente va recueillir une
+grande quantité de données via divers capteurs afin de prendre une décision, et va ensuite indiquer
+à chacun de ses composants le comportement qu'il doit adopter en conséquence. A l'inverse dans une IA 
+en réseau chaque composant va prendre une décision en fonction de l'état son environnement proche, et
+c'est la somme de ces décisions qui forment l'intelligence artificielle.
+
+Nous avons développé Ragnar comme une IA en réseau, où les décisions sont prises au niveau de chacune
+des planètes du plateau de jeu. Nous avons avons ainsi cherché à ce que chaque planète ait une
+connaissance aigüe de son environnement afin de prendre une décision rapide et pertinente.
