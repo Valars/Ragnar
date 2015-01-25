@@ -28,7 +28,7 @@ et de structuration d'un projet est une part déterminante de son succès. Nous 
 le temps construire notre raisonnement mais aussi de déterminer l'ensemble de notre vocabulaire de travail. 
 En effet, il nous a été important de nous fixer un lexique commun afin de raisonner dans une même "langue".
 
-Nous souhaitons remercier l'ensemble de l'équipe POOO pour pour leur encadrement dans ce projet, et nous
+Nous souhaitons remercier l'ensemble de l'équipe POOO pour leur encadrement dans ce projet, et nous
 souhaitons bonne chance aux autres équipes : la confrontation sera rude \o/ .
 
        ,   |\ ,__
