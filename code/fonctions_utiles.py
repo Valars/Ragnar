@@ -252,10 +252,10 @@ def triNoeudsDistances(listeNoeuds, noeudDistant) :
                     danger et le second sa rentabilité, plus la valeur de la rentabilité est elevée, plus le noeud est important.
     
     E : listeNoeud   : Liste : Liste des noeud à classer selon leur rentabilité et contenant le nombre d'unités nécessaires pour les aider
-                                [[noeud, besoin], [noeud, besoin]...
+                                [noeud1, noeud2,...]
         noeudDistant : Noeud : Noeud qui sert de point de réference pour le calcul de la rentabilité des autres noeuds
     
-    S : listeTrie    : Liste : [[rentabilite, noeud],[rentabilite, noeud],[rentabilite, noeud]...] du noeud le plus rentable au moins rentable
+    S : listeTrie    : Liste : Comme listeNoeud mais trié selon la rentabilité du point de vu de noeudDistant
 '''
 def triLePlusRentable(listeNoeud, noeudDistant ):
     
@@ -294,13 +294,13 @@ def triLePlusRentable(listeNoeud, noeudDistant ):
     
     listeTrie = sorted(listeTrie, key=lambda rentabilite:rentabilite[1])
 
+    resultat = []
     for liste in listeTrie:
-        liste.pop()
-    return listeTrie    
+        resultat.append(liste[0])
+        
+    return resultat
     
 
     
-    
 
-    
     
